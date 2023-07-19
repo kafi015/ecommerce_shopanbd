@@ -1,4 +1,6 @@
+import 'package:ecommerce_shopanbd/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../utils/app_colors.dart';
 
@@ -10,6 +12,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: 2)).then((value) {
+      Get.to(HomeScreen());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,7 +49,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   padding: EdgeInsets.all(20.0),
                   child: Text(
                     "Vertion 1.0.0",
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: greyColor,
+                    letterSpacing: 0.4
+                    ),
                   ),
                 ),
                 SizedBox(
