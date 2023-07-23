@@ -5,10 +5,11 @@ import '../utils/text_style.dart';
 
 class ElevatedButtonApp extends StatelessWidget {
   const ElevatedButtonApp({
-    super.key, required this.onPressed,
+    super.key, required this.onPressed, required this.title,
   });
 
   final VoidCallback onPressed;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class ElevatedButtonApp extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
-                'Next',
+                title,
                 style: buttonTextStyle,
               ),
             )),

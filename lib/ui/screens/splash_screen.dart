@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopanbd/ui/screens/home_screen.dart';
+import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,8 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 2)).then((value) {
-      Get.to(HomeScreen());
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+      Get.to(const EmailVerificationScreen());
     });
   }
 

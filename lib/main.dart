@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopanbd/ui/screens/email_verification_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +16,7 @@ class ShopanBD extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: EmailVerificationScreen(),
+      home: SplashScreen(),
     );
   }
 }

@@ -1,9 +1,11 @@
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../widgets/elevated_button.dart';
-import '../widgets/text_form_field.dart';
-import '../widgets/title_text.dart';
+import '../../widgets/elevated_button.dart';
+import '../../widgets/text_form_field.dart';
+import '../../widgets/title_text.dart';
+import 'otp_verification_screen.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({Key? key}) : super(key: key);
@@ -46,13 +48,15 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                 height: 20,
               ),
               TextFormFieldApp(
-                controller: TextEditingController(),
+                controller: TextEditingController(), hintText: 'Email Address', textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(
                 height: 20,
               ),
               ElevatedButtonApp(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(const OtpVerificationScreen());
+                }, title: 'Next',
               ),
             ],
           ),
