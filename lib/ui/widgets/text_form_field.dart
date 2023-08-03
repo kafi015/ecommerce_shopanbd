@@ -4,12 +4,13 @@ import '../utils/app_colors.dart';
 
 class TextFormFieldApp extends StatelessWidget {
   const TextFormFieldApp({
-    super.key, required this.controller, required this.hintText, required this.textInputType,
+    super.key, required this.controller, required this.hintText, required this.textInputType, this.maxLine,
   });
 
   final TextEditingController controller;
   final String hintText;
   final TextInputType textInputType;
+  final int? maxLine;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class TextFormFieldApp extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 22),
       child: TextFormField(
         keyboardType: textInputType,
+        minLines: maxLine ?? 1,
         controller: controller,
         cursorColor: primaryColor,
         decoration:  InputDecoration(

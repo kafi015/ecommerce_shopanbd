@@ -1,4 +1,7 @@
+import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../utils/app_colors.dart';
@@ -72,9 +75,16 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 height: 20,
               ),
               ElevatedButtonApp(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(CompleteProfileScreen());
+                },
                 title: 'Next',
               ),
+              /*Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                width: double.infinity,
+                  child: ElevatedButton(onPressed: () {                  Get.to(CompleteProfileScreen());
+                  }, child: Text('Next'))),*/
               const SizedBox(
                 height: 20,
               ),

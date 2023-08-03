@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopanbd/ui/screens/bottom_nav_bar_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      Get.to(const EmailVerificationScreen());
+      Get.to(const BottomNavBarScreen());
     });
   }
 
