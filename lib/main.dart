@@ -19,6 +19,10 @@ class ShopanBD extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+          elevation: 1
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: primaryColor,
@@ -29,3 +33,8 @@ class ShopanBD extends StatelessWidget {
     );
   }
 }
+
+
+//Class 47
+// 03 May 2023
+// 20 min done
