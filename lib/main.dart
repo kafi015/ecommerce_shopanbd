@@ -1,5 +1,7 @@
 import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
+import 'package:ecommerce_shopanbd/ui/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,10 +18,16 @@ class ShopanBD extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
+      initialBinding: GetxBinding(),
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(
+        appBarTheme:  AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontSize: 24,
+            color: greyColor,
+            fontWeight: FontWeight.w600
+          ),
           backgroundColor: Colors.white,
           elevation: 1
         ),
@@ -31,6 +39,14 @@ class ShopanBD extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+class GetxBinding extends Bindings{
+  @override
+  void dependencies() {
+  //  Get.create<BottomNavigationBarController>(() => BottomNavigationBarController());
+   // Get.put(() => BottomNavigationBarController());
+    Get.put(BottomNavigationBarController());
   }
 }
 
