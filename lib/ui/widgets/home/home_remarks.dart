@@ -23,7 +23,7 @@ class Remarks extends StatelessWidget {
         ),
         TextButton(
             onPressed: onTap,
-            child: Text(
+            child: const Text(
               'See All',
               style: TextStyle(color: primaryColor),
             )),

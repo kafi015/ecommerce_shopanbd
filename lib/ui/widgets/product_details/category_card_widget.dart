@@ -21,7 +21,7 @@ class CategoryCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(CategoryScreen(
+        Get.to(const CategoryScreen(
        //   categoryId: id,
         ));
       },

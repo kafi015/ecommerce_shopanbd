@@ -1,5 +1,4 @@
 import 'package:ecommerce_shopanbd/ui/screens/bottom_nav_bar_screen.dart';
-import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

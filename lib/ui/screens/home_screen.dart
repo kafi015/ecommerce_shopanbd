@@ -6,6 +6,7 @@ import '../widgets/home/appbar_icons.dart';
 import '../widgets/home/home_carousal_widget.dart';
 import '../widgets/home/home_remarks.dart';
 import '../widgets/home/search_textfield.dart';
+import '../widgets/product_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -58,22 +59,22 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
-              SearchTextField(),
+              const SearchTextField(),
               const SizedBox(
                 height: 16,
               ),
               HomeCaruosalWidget(),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Remarks(
                 title: 'All Categories',
                 onTap: () {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              SingleChildScrollView(
+              const SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -107,130 +108,76 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Remarks(
                 title: 'Popular',
                 onTap: () {},
               ),
-              SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+              const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Remarks(
                 title: 'Special',
                 onTap: () {},
               ),
-              SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+              const SizedBox(
+                height: 16,
+              ),
+              const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Remarks(
                 title: 'New',
                 onTap: () {},
               ),
-              SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+              const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+                    ProductCart(),
+
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
             ],
@@ -240,3 +187,5 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+

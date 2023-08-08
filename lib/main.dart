@@ -17,16 +17,16 @@ class ShopanBD extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: const SplashScreen(),
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 1
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: primaryColor,
-            textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),
+            textStyle: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400),
           )
         ),
       ),
