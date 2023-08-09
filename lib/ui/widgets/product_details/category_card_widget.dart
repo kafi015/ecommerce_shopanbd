@@ -1,4 +1,5 @@
 import 'package:ecommerce_shopanbd/ui/screens/category_screen.dart';
+import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,9 +22,7 @@ class CategoryCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(const CategoryScreen(
-       //   categoryId: id,
-        ));
+       Get.to(ProductListScreen());
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 6),

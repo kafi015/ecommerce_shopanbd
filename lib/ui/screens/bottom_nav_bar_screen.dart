@@ -6,10 +6,9 @@ import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.d
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class BottomNavBarScreen extends StatelessWidget {
-   BottomNavBarScreen({Key? key}) : super(key: key);
+   const BottomNavBarScreen({Key? key}) : super(key: key);
 
   final List<Widget> screens = const [
     HomeScreen(),
@@ -17,8 +16,6 @@ class BottomNavBarScreen extends StatelessWidget {
     CartScreen(),
     WishListScreen(),
   ];
-
-  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,6 @@ import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CategoryScreen extends StatelessWidget {
    const CategoryScreen({Key? key}) : super(key: key);
@@ -15,21 +14,21 @@ class CategoryScreen extends StatelessWidget {
           onPressed: () {
             Get.find<BottomNavigationBarController>().backToHome();
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: greyColor,
           ),
         ),
-        title: Text('Categories'),
+        title: const Text('Categories'),
       ),
       body: GridView.builder(
         itemCount: 30,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
           ),
           itemBuilder: (context, index)
           {
-            return CategoryCardWidget(name: 'name', imageUrl: Icons.laptop, id: 1);
+            return const CategoryCardWidget(name: 'name', imageUrl: Icons.laptop, id: 1);
           }
       ),
     );

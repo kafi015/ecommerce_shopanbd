@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      Get.off( BottomNavBarScreen());
+      Get.off( const BottomNavBarScreen());
     });
   }
 

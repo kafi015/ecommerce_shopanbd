@@ -1,6 +1,9 @@
+import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../widgets/home/appbar_icons.dart';
 import '../widgets/home/home_carousal_widget.dart';
@@ -69,7 +72,9 @@ class HomeScreen extends StatelessWidget {
               ),
               Remarks(
                 title: 'All Categories',
-                onTap: () {},
+                onTap: () {
+                  Get.find<BottomNavigationBarController>().changeIndex(1);
+                },
               ),
               const SizedBox(
                 height: 16,
@@ -113,7 +118,9 @@ class HomeScreen extends StatelessWidget {
               ),
               Remarks(
                 title: 'Popular',
-                onTap: () {},
+                onTap: () {
+                  Get.to(ProductListScreen());
+                },
               ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,

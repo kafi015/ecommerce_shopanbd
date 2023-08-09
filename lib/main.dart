@@ -1,7 +1,6 @@
 import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
-import 'package:ecommerce_shopanbd/ui/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +21,7 @@ class ShopanBD extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
       theme: ThemeData(
-        appBarTheme:  AppBarTheme(
+        appBarTheme:  const AppBarTheme(
           titleTextStyle: TextStyle(
             fontSize: 24,
             color: greyColor,
@@ -51,6 +50,6 @@ class GetxBinding extends Bindings{
 }
 
 
-//Class 47
-// 03 May 2023
-// 20 min done
+//Class 49
+// 08 May 2023
+// done
