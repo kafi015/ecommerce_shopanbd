@@ -1,5 +1,6 @@
 import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,6 +47,7 @@ class GetxBinding extends Bindings{
   //  Get.create<BottomNavigationBarController>(() => BottomNavigationBarController());
    // Get.put(() => BottomNavigationBarController());
     Get.put(BottomNavigationBarController());
+    Get.put(CartController());
   }
 }
 

@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
               Remarks(
                 title: 'Popular',
                 onTap: () {
-                  Get.to(ProductListScreen());
+                  Get.to(const ProductListScreen());
                 },
               ),
               const SingleChildScrollView(
