@@ -8,9 +8,25 @@ import 'package:get/get.dart';
 import '../utils/app_colors.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({Key? key}) : super(key: key);
+  ProductDetailsScreen({Key? key}) : super(key: key);
+  final List<Color> _colors = [
+    Colors.amber,
+    Colors.blue,
+    Colors.grey,
+    Colors.purple,
+    Colors.tealAccent,
+  ];
+  final List<String> _sizes = [
+    'L',
+    'XL',
+    '2L',
+    'X',
+  ];
+
   @override
   Widget build(BuildContext context) {
+    Get.find<CartController>().setProductColor(_colors[0]);
+    Get.find<CartController>().setProductSize(_sizes[0]);
     return Scaffold(
       appBar: AppBar(
         leading: const AppBarBackButtton(),
@@ -19,10 +35,13 @@ class ProductDetailsScreen extends StatelessWidget {
       body: Column(
         children: [
           ProductImageCarusal(),
-          const SizedBox(height: 5,),
+          const SizedBox(
+            height: 5,
+          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -63,9 +82,9 @@ class ProductDetailsScreen extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    controller.noOfProductGet < 10
-                                        ? '0${controller.noOfProductGet}'
-                                        : controller.noOfProductGet.toString(),
+                                    controller.getNoOfProduct < 10
+                                        ? '0${controller.getNoOfProduct}'
+                                        : controller.getNoOfProduct.toString(),
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w500),
@@ -146,6 +165,75 @@ class ProductDetailsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ],
+                ),
+                Text(
+                  'Colors',
+                  style: subTitleTextStyle.copyWith(fontSize: 20),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    for (int i = 0; i < _colors.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5.0),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(20.0),
+                          onTap: () {
+                            Get.find<CartController>()
+                                .setProductColor(_colors[i]);
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: _colors[i],
+                            radius: 15,
+                            child: GetBuilder<CartController>(
+                              builder: (controller) => Visibility(
+                                  visible: Get.find<CartController>()
+                                          .getProductColor ==
+                                      _colors[i],
+                                  child: Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                  )),
+                            ),
+                          ),
+                        ),
+                      )
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Size',
+                  style: subTitleTextStyle.copyWith(fontSize: 20),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    for (int i = 0; i < _sizes.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5.0),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(20.0),
+                          onTap: () {
+                            Get.find<CartController>()
+                                .setProductSize(_sizes[i]);
+                          },
+                          child: GetBuilder<CartController>(
+                            builder: (controller) => CircleAvatar(
+                              backgroundColor: controller.getProductSize == _sizes[i]? primaryColor: Colors.white,
+                              radius: 15,
+                              child: Text(_sizes[i]),
+
+                            ),
+                          ),
+                        ),
+                      )
                   ],
                 ),
               ],

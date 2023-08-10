@@ -29,13 +29,13 @@ class ShopanBD extends StatelessWidget {
             fontWeight: FontWeight.w600
           ),
           backgroundColor: Colors.white,
-          elevation: 1
+          elevation: 1,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: primaryColor,
             textStyle: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400),
-          )
+          ),
         ),
       ),
     );
@@ -52,6 +52,6 @@ class GetxBinding extends Bindings{
 }
 
 
-//Class 49
-// 08 May 2023
-// done
+//Class 50
+// 12 May 2023
+// 45.08 min done

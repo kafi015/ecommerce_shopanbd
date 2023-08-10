@@ -15,7 +15,7 @@ class ProductCart extends StatelessWidget {
       width: 140,
       child: InkWell(
         onTap: () {
-          Get.to(const ProductDetailsScreen());
+          Get.to(ProductDetailsScreen());
         },
         child: Card(
           margin: const EdgeInsets.symmetric(horizontal: 5),

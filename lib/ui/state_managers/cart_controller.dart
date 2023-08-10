@@ -1,10 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController
 {
   int noOfProduct = 1;
+  Color productColor = Colors.white;
+  late String productSize;
 
-  int get noOfProductGet => noOfProduct;
+  int get getNoOfProduct => noOfProduct;
+  Color get getProductColor => productColor;
+  String get getProductSize => productSize;
+
 
   void addCartNumber()
   {
@@ -21,5 +27,15 @@ class CartController extends GetxController
           noOfProduct -= 1;
           update();
         }
+  }
+  void setProductColor(Color c)
+  {
+    productColor = c;
+    update();
+  }
+  void setProductSize(String s)
+  {
+    productSize = s;
+    update();
   }
 }
