@@ -1,4 +1,5 @@
 import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
+import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widget.dart';
@@ -35,7 +36,9 @@ class HomeScreen extends StatelessWidget {
             const Spacer(),
             AppBarIcons(
               icon: Icons.person,
-              onTap: () {},
+              onTap: () {
+                Get.to(EmailVerificationScreen());
+              },
             ),
             const SizedBox(
               width: 10,
