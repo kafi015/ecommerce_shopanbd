@@ -280,11 +280,11 @@ class ProductDetailsScreen extends StatelessWidget {
             height: 60,
             decoration: BoxDecoration(
                 color: primaryColor.withOpacity(0.2),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(20.0),
                   topLeft: Radius.circular(20.0),
                 )),
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -305,7 +305,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                ElevatedButton(onPressed: () {}, child: Text('Add to Cart')),
+                ElevatedButton(onPressed: () {}, child: const Text('Add to Cart')),
               ],
             ),
           ),

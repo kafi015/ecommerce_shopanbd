@@ -53,5 +53,5 @@ class GetxBinding extends Bindings{
 
 
 //Class 50
-// 12 May 2023
-// 53.17 min done
+// 13 May 2023
+// 40 min done
