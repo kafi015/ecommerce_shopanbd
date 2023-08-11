@@ -1,113 +1,147 @@
-import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
+import 'package:ecommerce_shopanbd/ui/screens/home_screen.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../utils/app_colors.dart';
+import '../../utils/snakbar_message.dart';
 import '../../widgets/elevated_button.dart';
 import '../../widgets/title_text.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({Key? key}) : super(key: key);
+  const OtpVerificationScreen({Key? key, required this.email})
+      : super(key: key);
+  final String email;
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+  final TextEditingController _otpETController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/App_Logo.jpg',
-                width: 200,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const TitleText(
-                text: "Enter OTP Code",
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                'A 4 Digit OTP Code has been Sent',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: greyColor,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              PinCodeTextField(
-                length: 4,
-                obscureText: false,
-                animationType: AnimationType.fade,
-                keyboardType: TextInputType.number,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                controller: TextEditingController(),
-                pinTheme: PinTheme(
-                    shape: PinCodeFieldShape.box,
-                    borderRadius: BorderRadius.circular(8),
-                    fieldHeight: 45,
-                    fieldWidth: 45,
-                    activeFillColor: Colors.white,
-                    selectedFillColor: Colors.white,
-                    selectedColor: Colors.green,
-                    activeColor: primaryColor,
-                    inactiveColor: primaryColor,
-                    inactiveFillColor: Colors.white),
-                animationDuration: const Duration(milliseconds: 300),
-                enableActiveFill: true,
-                onCompleted: (v) {},
-                onChanged: (value) {},
-                appContext: context,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButtonApp(
-                onPressed: () {
-                  Get.to(const CompleteProfileScreen());
-                },
-                title: 'Next',
-              ),
-              /*Container(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                width: double.infinity,
-                  child: ElevatedButton(onPressed: () {                  Get.to(CompleteProfileScreen());
-                  }, child: Text('Next'))),*/
-              const SizedBox(
-                height: 20,
-              ),
-              RichText(
-                text: const TextSpan(
-                  style: TextStyle(fontSize: 13, color: greyColor),
-                  text: 'This code will be expire in ',
-                  children: [
-                    TextSpan(
-                      style: TextStyle(
-                          color: primaryColor, fontWeight: FontWeight.w600),
-                      text: '120s',
+        body: GetBuilder<UserAuthController>(
+          builder: (authController) => Center(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/App_Logo.jpg',
+                    width: 200,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const TitleText(
+                    text: "Enter OTP Code",
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    'A 4 Digit OTP Code has been Sent',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: greyColor,
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  PinCodeTextField(
+                    validator: (value) {
+                      if (value?.isEmpty ?? true) {
+                        return 'Please enter the otp';
+                      } else {
+                        return null;
+                      }
+                    },
+                    length: 4,
+                    obscureText: false,
+                    animationType: AnimationType.fade,
+                    keyboardType: TextInputType.number,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    controller: _otpETController,
+                    pinTheme: PinTheme(
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(8),
+                        fieldHeight: 45,
+                        fieldWidth: 45,
+                        activeFillColor: Colors.white,
+                        selectedFillColor: Colors.white,
+                        selectedColor: Colors.green,
+                        activeColor: primaryColor,
+                        inactiveColor: primaryColor,
+                        inactiveFillColor: Colors.white),
+                    animationDuration: const Duration(milliseconds: 300),
+                    enableActiveFill: true,
+                    onCompleted: (v) {},
+                    onChanged: (value) {},
+                    appContext: context,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  authController.otpVarificationInProgress?const Center(child: CircularProgressIndicator(color: primaryColor,),):ElevatedButtonApp(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        final bool response =
+                            await authController.otpVarification(
+                                widget.email, _otpETController.text);
+                        if (response) {
+                          Get.to(const HomeScreen());
+                        } else {
+                          if (mounted) {
+                            showSnackBarMessage(context,
+                                "OTP Verification failed.\n Check otp once again before enter it.", Colors.red);
+                          }
+                        }
+                      } else {
+                        showSnackBarMessage(context,
+                            "Please enter otp. Then press next.", Colors.red);
+                      }
+                    },
+                    title: 'Next',
+                  ),
+                  /*Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    width: double.infinity,
+                      child: ElevatedButton(onPressed: () {                  Get.to(CompleteProfileScreen());
+                      }, child: Text('Next'))),*/
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  RichText(
+                    text: const TextSpan(
+                      style: TextStyle(fontSize: 13, color: greyColor),
+                      text: 'This code will be expire in ',
+                      children: [
+                        TextSpan(
+                          style: TextStyle(
+                              color: primaryColor, fontWeight: FontWeight.w600),
+                          text: '120s',
+                        ),
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Resend Code',
+                      style: TextStyle(color: greyColor.withOpacity(0.5)),
+                    ),
+                  )
+                ],
               ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Resend Code',
-                  style: TextStyle(color: greyColor.withOpacity(0.5)),
-                ),
-              )
-            ],
+            ),
           ),
         ),
       ),

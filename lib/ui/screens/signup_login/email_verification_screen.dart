@@ -69,8 +69,8 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                     height: 20,
                   ),
                   authController.emailVarificationInProgress
-                      ? Center(
-                          child: CircularProgressIndicator(),
+                      ? const Center(
+                          child: CircularProgressIndicator(color: primaryColor,),
                         )
                       : ElevatedButtonApp(
                           onPressed: () async {
@@ -78,20 +78,21 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                               final bool response = await authController
                                   .emailVarification(_emailETController.text);
                               if (response) {
-                                Get.to(const OtpVerificationScreen());
+                                Get.to(OtpVerificationScreen(
+                                  email: _emailETController.text,
+                                ));
                               } else {
                                 if (mounted) {
                                   showSnackBarMessage(context,
                                       "Email Varification Failed", Colors.red);
                                 }
                               }
+                            } else {
+                              showSnackBarMessage(
+                                  context,
+                                  "Please enter valid email. Then press next.",
+                                  Colors.red);
                             }
-                            else
-                              {
-                                showSnackBarMessage(context,
-                                    "Please enter valid email. Then press next.", Colors.red);
-
-                              }
                           },
                           title: 'Next',
                         ),

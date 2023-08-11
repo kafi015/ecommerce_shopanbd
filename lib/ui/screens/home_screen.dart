@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
             AppBarIcons(
               icon: Icons.person,
               onTap: () {
-                Get.to(EmailVerificationScreen());
+                Get.to(const EmailVerificationScreen());
               },
             ),
             const SizedBox(
