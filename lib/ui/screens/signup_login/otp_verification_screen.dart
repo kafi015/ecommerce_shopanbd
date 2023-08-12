@@ -102,7 +102,7 @@ class OtpVerificationScreen extends StatelessWidget {
                               //log(response as String);
                               if (response) {
                                 log('home screen');
-                                Get.to(const HomeScreen());
+                                Get.offAll(const HomeScreen());
                               } else {
                                 log('fail');
                                 Get.showSnackbar(const GetSnackBar(

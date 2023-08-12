@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:ecommerce_shopanbd/data/services/network_caller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/user_profile_controller.dart';
 import 'package:get/get.dart';
 
 class UserAuthController extends GetxController {
@@ -43,6 +44,7 @@ class UserAuthController extends GetxController {
       log('token token token token tokne token');
       log(response.returnData['data']);
       await Get.find<AuthController>().saveToken(response.returnData['data']);
+      Get.find<UserProfileController>().getProfileData();
       _timer.cancel();
       return true;
     } else {
