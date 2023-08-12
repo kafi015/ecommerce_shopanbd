@@ -1,5 +1,7 @@
 import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
+import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widget.dart';
@@ -36,8 +38,10 @@ class HomeScreen extends StatelessWidget {
             const Spacer(),
             AppBarIcons(
               icon: Icons.person,
-              onTap: () {
-                Get.to(const EmailVerificationScreen());
+              onTap: () async {
+                await Get.find<AuthController>().isLoggedIn()
+                    ? Get.to(const CompleteProfileScreen())
+                    : Get.to(const EmailVerificationScreen());
               },
             ),
             const SizedBox(
@@ -136,7 +140,6 @@ class HomeScreen extends StatelessWidget {
                     ProductCart(),
                     ProductCart(),
                     ProductCart(),
-
                   ],
                 ),
               ),
@@ -161,7 +164,6 @@ class HomeScreen extends StatelessWidget {
                     ProductCart(),
                     ProductCart(),
                     ProductCart(),
-
                   ],
                 ),
               ),
@@ -183,7 +185,6 @@ class HomeScreen extends StatelessWidget {
                     ProductCart(),
                     ProductCart(),
                     ProductCart(),
-
                   ],
                 ),
               ),
@@ -197,5 +198,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-

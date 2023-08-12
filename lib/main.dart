@@ -1,4 +1,5 @@
 import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
@@ -50,10 +51,11 @@ class GetxBinding extends Bindings{
     Get.put(BottomNavigationBarController());
     Get.put(CartController());
     Get.put(UserAuthController());
+    Get.put(AuthController());
   }
 }
 
 
-//Class 50
-// 13 May 2023
-// 40 min done
+//Class
+// 15 May 2023
+// 58 min er 12 min & ager ta baki

@@ -1,4 +1,6 @@
 import 'package:ecommerce_shopanbd/ui/screens/bottom_nav_bar_screen.dart';
+import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,8 +19,17 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).then((value) {
-      Get.off( const BottomNavBarScreen());
+    Future.delayed(const Duration(seconds: 1)).then((value) async{
+      final bool logInState = await Get.find<AuthController>().isLoggedIn();
+      if(logInState) {
+        Get.off(const BottomNavBarScreen());
+      }
+          else
+            {
+              Get.off(const EmailVerificationScreen());
+            }
+
+
     });
   }
 
