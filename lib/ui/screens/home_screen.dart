@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
@@ -139,7 +138,7 @@ class HomeScreen extends StatelessWidget {
               Remarks(
                 title: 'Popular',
                 onTap: () {
-                  Get.to(const ProductListScreen());
+                //  Get.to(const ProductListScreen());
                 },
               ),
               GetBuilder<ProductByRemarkController>(builder: (popularRemarkController) {
@@ -159,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: popularRemarkController.getPopularRemarkModel.productRemarkData!
+                      children: popularRemarkController.getPopularRemarkModel.productCategoryData!
                           .map((product) => ProductCart(
                         product: product,
                       ),
@@ -196,7 +195,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: specialRemarkController.getSpecialRemarkModel.productRemarkData!
+                      children: specialRemarkController.getSpecialRemarkModel.productCategoryData!
                           .map((product) => ProductCart(
                         product: product,
                       ),
@@ -233,7 +232,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: newRemarkController.getNewRemarkModel.productRemarkData!
+                      children: newRemarkController.getNewRemarkModel.productCategoryData!
                           .map((product) => ProductCart(
                         product: product,
                       ),

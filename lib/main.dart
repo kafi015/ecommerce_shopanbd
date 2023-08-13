@@ -5,6 +5,7 @@ import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/category_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/home_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/product_by_remark_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/product_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_profile_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
@@ -56,6 +57,7 @@ class GetxBinding extends Bindings {
     Get.put(HomeController());
     Get.put(CategoryController());
     Get.put(ProductByRemarkController());
+    Get.put(ProductController());
   }
 }
 

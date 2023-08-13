@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopanbd/data/models/product_remark_model.dart';
+import 'package:ecommerce_shopanbd/data/models/product_by_category_model.dart';
 import 'package:ecommerce_shopanbd/data/services/network_caller.dart';
 import 'package:get/get.dart';
 
@@ -9,9 +9,9 @@ class ProductByRemarkController extends GetxController {
   bool _popularRemarkInProgress = false;
   bool _specialRemarkInProgress = false;
   bool _newRemarkInProgress = false;
-  ProductRemarkModel _popularRemarkModel = ProductRemarkModel();
-  ProductRemarkModel _specialRemarkModel = ProductRemarkModel();
-  ProductRemarkModel _newRemarkModel = ProductRemarkModel();
+  ProductByCategoryModel _popularRemarkModel = ProductByCategoryModel();
+  ProductByCategoryModel _specialRemarkModel = ProductByCategoryModel();
+  ProductByCategoryModel _newRemarkModel = ProductByCategoryModel();
 
   bool get getPopularRemarkInProgress => _popularRemarkInProgress;
 
@@ -19,11 +19,11 @@ class ProductByRemarkController extends GetxController {
 
   bool get getNewRemarkInProgress => _newRemarkInProgress;
 
-  ProductRemarkModel get getPopularRemarkModel => _popularRemarkModel;
+  ProductByCategoryModel get getPopularRemarkModel => _popularRemarkModel;
 
-  ProductRemarkModel get getSpecialRemarkModel => _specialRemarkModel;
+  ProductByCategoryModel get getSpecialRemarkModel => _specialRemarkModel;
 
-  ProductRemarkModel get getNewRemarkModel => _newRemarkModel;
+  ProductByCategoryModel get getNewRemarkModel => _newRemarkModel;
 
   Future<bool> getPopularRemarkProducts() async {
     _popularRemarkInProgress = true;
@@ -32,7 +32,7 @@ class ProductByRemarkController extends GetxController {
         await NetworkCaller.getRequest(url: '/ListProductByRemark/popular');
     _popularRemarkInProgress = false;
     if (response.isSuccess) {
-      _popularRemarkModel = ProductRemarkModel.fromJson(response.returnData);
+      _popularRemarkModel = ProductByCategoryModel.fromJson(response.returnData);
       update();
       return true;
     } else {
@@ -48,7 +48,7 @@ class ProductByRemarkController extends GetxController {
         await NetworkCaller.getRequest(url: '/ListProductByRemark/special');
     _specialRemarkInProgress = false;
     if (response.isSuccess) {
-      _specialRemarkModel = ProductRemarkModel.fromJson(response.returnData);
+      _specialRemarkModel = ProductByCategoryModel.fromJson(response.returnData);
       update();
       return true;
     } else {
@@ -64,7 +64,7 @@ class ProductByRemarkController extends GetxController {
         await NetworkCaller.getRequest(url: '/ListProductByRemark/new');
     _newRemarkInProgress = false;
     if (response.isSuccess) {
-      _newRemarkModel = ProductRemarkModel.fromJson(response.returnData);
+      _newRemarkModel = ProductByCategoryModel.fromJson(response.returnData);
       update();
       return true;
     } else {
