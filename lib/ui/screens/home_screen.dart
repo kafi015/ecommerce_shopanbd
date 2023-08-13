@@ -124,7 +124,8 @@ class HomeScreen extends StatelessWidget {
                           .map((category) => CategoryCardWidget(
                               name: category.categoryName ?? '',
                               imageUrl: category.categoryImg ?? '',
-                              id: category.id ?? 0))
+                              id: category.id ?? 0)
+                      )
                           .toList(),
                     ),
                   );
