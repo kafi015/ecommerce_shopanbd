@@ -1,8 +1,10 @@
+import 'package:ecommerce_shopanbd/data/models/home_slider_model.dart';
 import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/home_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +75,22 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              HomeCaruosalWidget(),
+              GetBuilder<HomeController>(builder: (homeController) {
+                if (homeController.getSliderInProgress) {
+                  return SizedBox(
+                    height: 200,
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: primaryColor,
+                      ),
+                    ),
+                  );
+                } else {
+                  return HomeCaruosalWidget(
+                    homeSliderModel: homeController.getHomeSliderModel,
+                  );
+                }
+              }),
               const SizedBox(
                 height: 16,
               ),

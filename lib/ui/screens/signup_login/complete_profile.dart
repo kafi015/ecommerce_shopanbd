@@ -1,6 +1,5 @@
 import 'package:ecommerce_shopanbd/ui/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
-
 import '../../utils/app_colors.dart';
 import '../../widgets/elevated_button.dart';
 import '../../widgets/title_text.dart';
@@ -13,6 +12,8 @@ class CompleteProfileScreen extends StatefulWidget {
 }
 
 class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

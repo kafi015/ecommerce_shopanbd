@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:ecommerce_shopanbd/data/models/response_model.dart';
+import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -28,6 +29,7 @@ class NetworkCaller {
             statusCode: response.statusCode,
             returnData: jsonDecode(response.body));
       } else if(response.statusCode == 401){
+        Get.offAll(const EmailVerificationScreen());
         return ResponseModel(
             isSuccess: false,
             statusCode: response.statusCode,

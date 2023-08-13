@@ -2,6 +2,7 @@ import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/home_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_profile_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
@@ -54,10 +55,11 @@ class GetxBinding extends Bindings{
     Get.put(UserAuthController());
     Get.put(AuthController());
     Get.put(UserProfileController());
+    Get.put(HomeController());
   }
 }
 
 
 //Class
-// 15 May 2023
-// 58 min er 12 min & ager ta baki
+// 17 May 2023
+// 27 min

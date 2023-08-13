@@ -3,19 +3,32 @@ import 'package:ecommerce_shopanbd/ui/screens/category_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/wish_list_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/home_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BottomNavBarScreen extends StatelessWidget {
+class BottomNavBarScreen extends StatefulWidget {
    const BottomNavBarScreen({Key? key}) : super(key: key);
 
+  @override
+  State<BottomNavBarScreen> createState() => _BottomNavBarScreenState();
+}
+
+class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   final List<Widget> screens = const [
     HomeScreen(),
     CategoryScreen(),
     CartScreen(),
     WishListScreen(),
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Get.find<HomeController>().getHomeSlider();
+  }
 
   @override
   Widget build(BuildContext context) {
