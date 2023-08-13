@@ -20,30 +20,30 @@ class AuthController extends GetxController {
   }
 
   Future<void> saveToken(String userToken) async {
-    SharedPreferences _preference = await SharedPreferences.getInstance();
+    SharedPreferences preference = await SharedPreferences.getInstance();
     _token = userToken;
-    await _preference.setString('token', userToken);
+    await preference.setString('token', userToken);
   }
 
   Future<void> getToken() async {
-    SharedPreferences _preference = await SharedPreferences.getInstance();
-    _token = _preference.getString('token');
+    SharedPreferences preference = await SharedPreferences.getInstance();
+    _token = preference.getString('token');
   }
 
   Future<void> saveProfileData(ProfileData profile) async {
-    SharedPreferences _preference = await SharedPreferences.getInstance();
+    SharedPreferences preference = await SharedPreferences.getInstance();
     _profileData = profile;
-    await _preference.setString('user_profile', profile.toJson().toString());
+    await preference.setString('user_profile', profile.toJson().toString());
   }
 
   Future<void> getProfileData() async {
-    SharedPreferences _preference = await SharedPreferences.getInstance();
+    SharedPreferences preference = await SharedPreferences.getInstance();
     _profileData = ProfileData.fromJson(
-        jsonDecode(_preference.getString('user_profile') ?? '{}'));
+        jsonDecode(preference.getString('user_profile') ?? '{}'));
   }
 
   Future<void> clearUserData() async {
-    SharedPreferences _preference = await SharedPreferences.getInstance();
-    await _preference.clear();
+    SharedPreferences preference = await SharedPreferences.getInstance();
+    await preference.clear();
   }
 }

@@ -19,7 +19,7 @@ class CategoryScreen extends StatelessWidget {
           ),
           itemBuilder: (context, index)
           {
-            return const CategoryCardWidget(name: 'name', imageUrl: Icons.laptop, id: 1);
+            return const CategoryCardWidget(name: 'name', imageUrl: '', id: 1);
           }
       ),
     );

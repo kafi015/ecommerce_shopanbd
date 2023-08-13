@@ -16,7 +16,7 @@ class HomeCaruosalWidget extends StatelessWidget {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            autoPlayInterval: Duration(seconds: 6),
+              autoPlayInterval: const Duration(seconds: 6),
               height: 200.0,
               viewportFraction: 1,
               autoPlay: true,
@@ -27,20 +27,20 @@ class HomeCaruosalWidget extends StatelessWidget {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(slider.image ?? ''),
-                      ),
-                      color: primaryColor,
-                      borderRadius: BorderRadius.circular(20.0),
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(slider.image ?? ''),
                     ),
-                     alignment: Alignment.center,
-                    // child: Text(
-                    //   'text $i',
-                    //   style: const TextStyle(fontSize: 16.0),
-                    // )
+                    color: primaryColor,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  alignment: Alignment.center,
+                  // child: Text(
+                  //   'text $i',
+                  //   style: const TextStyle(fontSize: 16.0),
+                  // )
                 );
               },
             );

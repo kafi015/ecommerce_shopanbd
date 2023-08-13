@@ -1,9 +1,9 @@
-import 'package:ecommerce_shopanbd/data/models/home_slider_model.dart';
 import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/category_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/home_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widget.dart';
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
               ),
               GetBuilder<HomeController>(builder: (homeController) {
                 if (homeController.getSliderInProgress) {
-                  return SizedBox(
+                  return const SizedBox(
                     height: 200,
                     child: Center(
                       child: CircularProgressIndicator(
@@ -103,40 +103,33 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              const SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                    CategoryCardWidget(
-                        name: 'name', imageUrl: Icons.computer, id: 1),
-                  ],
-                ),
-              ),
+              GetBuilder<CategoryController>(builder: (categoryController) {
+                if (categoryController.getCategotyInProgress) {
+                  return const SizedBox(
+                    height: 100,
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: primaryColor,
+                      ),
+                    ),
+                  );
+                } else {
+                  return SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: categoryController.categoryModel.categories!
+                          .map((category) => CategoryCardWidget(
+                              name: category.categoryName ?? '',
+                              imageUrl: category.categoryImg ?? '',
+                              id: category.id ?? 0))
+                          .toList(),
+                    ),
+                  );
+                }
+              }),
               const SizedBox(
                 height: 16,
               ),

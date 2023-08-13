@@ -14,7 +14,7 @@ class CategoryCardWidget extends StatelessWidget {
   }) : super(key: key);
 
   final String name;
-  final IconData imageUrl;
+  final String imageUrl;
   final int id;
 
   @override
@@ -34,7 +34,12 @@ class CategoryCardWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Icon(imageUrl,color: primaryColor,),
+                child: Image.network(
+                  imageUrl,
+                  height: 50,
+                  width: 50,
+                  fit: BoxFit.scaleDown,
+                ),
               ),
             ),
             const SizedBox(
