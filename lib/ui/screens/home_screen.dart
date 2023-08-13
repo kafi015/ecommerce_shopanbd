@@ -67,6 +67,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
@@ -125,8 +126,7 @@ class HomeScreen extends StatelessWidget {
                           .map((category) => CategoryCardWidget(
                               name: category.categoryName ?? '',
                               imageUrl: category.categoryImg ?? '',
-                              id: category.id ?? 0)
-                      )
+                              id: category.id ?? 0))
                           .toList(),
                     ),
                   );
@@ -138,11 +138,11 @@ class HomeScreen extends StatelessWidget {
               Remarks(
                 title: 'Popular',
                 onTap: () {
-                //  Get.to(const ProductListScreen());
+                  //  Get.to(const ProductListScreen());
                 },
               ),
-              
-              GetBuilder<ProductByRemarkController>(builder: (popularRemarkController) {
+              GetBuilder<ProductByRemarkController>(
+                  builder: (popularRemarkController) {
                 if (popularRemarkController.getPopularRemarkInProgress) {
                   return const SizedBox(
                     height: 100,
@@ -159,11 +159,13 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: popularRemarkController.getPopularRemarkModel.productCategoryData!
-                          .map((product) => ProductCart(
-                        product: product,
-                      ),
-                      )
+                      children: popularRemarkController
+                          .getPopularRemarkModel.productCategoryData!
+                          .map(
+                            (product) => ProductCart(
+                              product: product,
+                            ),
+                          )
                           .toList(),
                     ),
                   );
@@ -179,7 +181,8 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              GetBuilder<ProductByRemarkController>(builder: (specialRemarkController) {
+              GetBuilder<ProductByRemarkController>(
+                  builder: (specialRemarkController) {
                 if (specialRemarkController.getSpecialRemarkInProgress) {
                   return const SizedBox(
                     height: 100,
@@ -196,11 +199,13 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: specialRemarkController.getSpecialRemarkModel.productCategoryData!
-                          .map((product) => ProductCart(
-                        product: product,
-                      ),
-                      )
+                      children: specialRemarkController
+                          .getSpecialRemarkModel.productCategoryData!
+                          .map(
+                            (product) => ProductCart(
+                              product: product,
+                            ),
+                          )
                           .toList(),
                     ),
                   );
@@ -216,7 +221,8 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              GetBuilder<ProductByRemarkController>(builder: (newRemarkController) {
+              GetBuilder<ProductByRemarkController>(
+                  builder: (newRemarkController) {
                 if (newRemarkController.getNewRemarkInProgress) {
                   return const SizedBox(
                     height: 100,
@@ -233,11 +239,13 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: newRemarkController.getNewRemarkModel.productCategoryData!
-                          .map((product) => ProductCart(
-                        product: product,
-                      ),
-                      )
+                      children: newRemarkController
+                          .getNewRemarkModel.productCategoryData!
+                          .map(
+                            (product) => ProductCart(
+                              product: product,
+                            ),
+                          )
                           .toList(),
                     ),
                   );
