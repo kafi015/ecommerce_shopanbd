@@ -143,7 +143,7 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               GetBuilder<ProductByRemarkController>(builder: (popularRemarkController) {
-                if (popularRemarkController.getRemarkInProgress) {
+                if (popularRemarkController.getPopularRemarkInProgress) {
                   return const SizedBox(
                     height: 100,
                     child: Center(
@@ -159,7 +159,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: popularRemarkController.getPopularRemarkModel.popularRemarkData!
+                      children: popularRemarkController.getPopularRemarkModel.productRemarkData!
                           .map((product) => ProductCart(
                         product: product,
                       ),
@@ -179,15 +179,33 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              const SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                physics: BouncingScrollPhysics(),
-                child: Row(
-                  children: [
-
-                  ],
-                ),
-              ),
+              GetBuilder<ProductByRemarkController>(builder: (specialRemarkController) {
+                if (specialRemarkController.getSpecialRemarkInProgress) {
+                  return const SizedBox(
+                    height: 100,
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: primaryColor,
+                      ),
+                    ),
+                  );
+                } else {
+                  return SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: specialRemarkController.getSpecialRemarkModel.productRemarkData!
+                          .map((product) => ProductCart(
+                        product: product,
+                      ),
+                      )
+                          .toList(),
+                    ),
+                  );
+                }
+              }),
               const SizedBox(
                 height: 16,
               ),
@@ -195,15 +213,36 @@ class HomeScreen extends StatelessWidget {
                 title: 'New',
                 onTap: () {},
               ),
-              const SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                physics: BouncingScrollPhysics(),
-                child: Row(
-                  children: [
-
-                  ],
-                ),
+              const SizedBox(
+                height: 16,
               ),
+              GetBuilder<ProductByRemarkController>(builder: (newRemarkController) {
+                if (newRemarkController.getNewRemarkInProgress) {
+                  return const SizedBox(
+                    height: 100,
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: primaryColor,
+                      ),
+                    ),
+                  );
+                } else {
+                  return SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: newRemarkController.getNewRemarkModel.productRemarkData!
+                          .map((product) => ProductCart(
+                        product: product,
+                      ),
+                      )
+                          .toList(),
+                    ),
+                  );
+                }
+              }),
               const SizedBox(
                 height: 16,
               ),
