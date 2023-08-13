@@ -26,6 +26,7 @@ class ProductCart extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
           shadowColor: primaryColor.withOpacity(0.3),
           elevation: 3,
+          color: primaryColor.withOpacity(0.1),
           child: Column(
             children: [
               Image.network(
@@ -45,7 +46,7 @@ class ProductCart extends StatelessWidget {
                         letterSpacing: 0.3,
                         height: 1.3,
                         fontWeight: FontWeight.w500,
-                        color: greyColor.withOpacity(0.7),
+                        color: Colors.black.withOpacity(0.7),
                       ),
                     ),
                     const SizedBox(

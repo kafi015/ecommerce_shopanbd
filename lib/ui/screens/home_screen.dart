@@ -141,6 +141,7 @@ class HomeScreen extends StatelessWidget {
                 //  Get.to(const ProductListScreen());
                 },
               ),
+              
               GetBuilder<ProductByRemarkController>(builder: (popularRemarkController) {
                 if (popularRemarkController.getPopularRemarkInProgress) {
                   return const SizedBox(
