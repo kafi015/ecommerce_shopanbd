@@ -8,6 +8,7 @@ import 'package:ecommerce_shopanbd/ui/state_managers/product_by_remark_controlle
 import 'package:ecommerce_shopanbd/ui/state_managers/product_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_profile_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/wish_list_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -58,6 +59,7 @@ class GetxBinding extends Bindings {
     Get.put(CategoryController());
     Get.put(ProductByRemarkController());
     Get.put(ProductController());
+    Get.put(WishListController());
   }
 }
 

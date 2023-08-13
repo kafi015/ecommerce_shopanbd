@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/models/profile_models.dart';
+import '../screens/signup_login/email_verification_screen.dart';
 
 class AuthController extends GetxController {
   static String? _token;
@@ -45,5 +46,19 @@ class AuthController extends GetxController {
   Future<void> clearUserData() async {
     SharedPreferences preference = await SharedPreferences.getInstance();
     await preference.clear();
+    _token = null;
+  }
+
+  Future<void> logOut() async {
+    await clearUserData();
+    Get.to(const EmailVerificationScreen());
+  }
+
+  Future<bool> checkAuthValidation() async {
+    final authState = await Get.find<AuthController>().isLoggedIn();
+    if (authState == false) {
+      Get.to(const EmailVerificationScreen());
+    }
+    return authState;
   }
 }

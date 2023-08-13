@@ -1,5 +1,6 @@
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/product_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/wish_list_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/text_style.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/appbar_back_button.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/product_image_carousal.dart';
@@ -188,19 +189,41 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 const SizedBox(
                                   width: 4,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: primaryColor,
-                                    borderRadius: BorderRadius.circular(4.0),
-                                  ),
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(3.0),
-                                    child: Icon(
-                                      Icons.favorite_border,
-                                      size: 14,
-                                      color: Colors.white,
-                                    ),
-                                  ),
+                                GetBuilder<WishListController>(
+                                  builder: (wishListController) {
+                                    if(wishListController.getWishListInProgress)
+                                      {
+                                        return const Center(
+                                          child: CircularProgressIndicator(
+                                            color: primaryColor,
+                                          ),
+                                        );
+                                      }
+                                    else {
+                                      return InkWell(
+                                        onTap: () {
+                                          Get.find<WishListController>()
+                                              .addWishList(
+                                              productDetails.productId!);
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: primaryColor,
+                                            borderRadius: BorderRadius.circular(
+                                                4.0),
+                                          ),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(3.0),
+                                            child: Icon(
+                                              Icons.favorite_border,
+                                              size: 14,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  }
                                 ),
                               ],
                             ),
@@ -371,11 +394,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return hexColors;
   }
 
-  // String _getHexCode(Color color) {
-  //   return color
-  //       .toString()
-  //       .replaceAll('0xff', '#')
-  //       .replaceAll('Color(', '')
-  //       .replaceAll(')', '');
-  // }
+// String _getHexCode(Color color) {
+//   return color
+//       .toString()
+//       .replaceAll('0xff', '#')
+//       .replaceAll('Color(', '')
+//       .replaceAll(')', '');
+// }
 }
