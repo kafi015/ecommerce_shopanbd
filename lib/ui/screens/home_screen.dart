@@ -5,6 +5,7 @@ import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/category_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/home_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/product_by_remark_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,7 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SearchTextField(),
               const SizedBox(
@@ -120,7 +122,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: categoryController.categoryModel.categories!
+                      children: categoryController.getCategoryModel.categories!
                           .map((category) => CategoryCardWidget(
                               name: category.categoryName ?? '',
                               imageUrl: category.categoryImg ?? '',
@@ -140,20 +142,33 @@ class HomeScreen extends StatelessWidget {
                   Get.to(const ProductListScreen());
                 },
               ),
-              const SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                physics: BouncingScrollPhysics(),
-                child: Row(
-                  children: [
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                  ],
-                ),
-              ),
+              GetBuilder<ProductByRemarkController>(builder: (popularRemarkController) {
+                if (popularRemarkController.getRemarkInProgress) {
+                  return const SizedBox(
+                    height: 100,
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: primaryColor,
+                      ),
+                    ),
+                  );
+                } else {
+                  return SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: popularRemarkController.getPopularRemarkModel.popularRemarkData!
+                          .map((product) => ProductCart(
+                        product: product,
+                      ),
+                      )
+                          .toList(),
+                    ),
+                  );
+                }
+              }),
               const SizedBox(
                 height: 16,
               ),
@@ -169,12 +184,7 @@ class HomeScreen extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 child: Row(
                   children: [
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
+
                   ],
                 ),
               ),
@@ -190,12 +200,7 @@ class HomeScreen extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 child: Row(
                   children: [
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
-                    ProductCart(),
+
                   ],
                 ),
               ),

@@ -9,7 +9,7 @@ class CategoryController extends GetxController {
   CategoryModel _categoryModel = CategoryModel();
 
   bool get getCategotyInProgress => _getCategotyInProgress;
-  CategoryModel get categoryModel =>  _categoryModel;
+  CategoryModel get getCategoryModel =>  _categoryModel;
   Future<bool> getCategories() async {
     _getCategotyInProgress = true;
     update();

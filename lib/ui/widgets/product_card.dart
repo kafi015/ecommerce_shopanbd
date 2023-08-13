@@ -2,12 +2,16 @@ import 'package:ecommerce_shopanbd/ui/screens/products_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../data/models/product.dart';
 import '../utils/app_colors.dart';
 
 class ProductCart extends StatelessWidget {
   const ProductCart({
-    super.key,
+    super.key, required this.product,
   });
+
+  final Product product;
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +28,8 @@ class ProductCart extends StatelessWidget {
           elevation: 3,
           child: Column(
             children: [
-              Image.asset(
-                'assets/shoe.png',
+              Image.network(
+                product.image ?? '',
                 height: 90,
                 width: 132,
                 fit: BoxFit.cover,
@@ -35,7 +39,7 @@ class ProductCart extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Nike Casual Shoe A345G',
+                      product.title ?? 'Unknown',
                       style: TextStyle(
                         fontSize: 13,
                         letterSpacing: 0.3,
@@ -49,9 +53,9 @@ class ProductCart extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Text(
-                          '\$340',
-                          style: TextStyle(
+                         Text(
+                          product.price ?? 'Unknown',
+                          style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
                             color: primaryColor,
@@ -69,7 +73,7 @@ class ProductCart extends StatelessWidget {
                               color: Colors.amber,
                             ),
                             Text(
-                              '4.5',
+                              product.star.toString(),
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,

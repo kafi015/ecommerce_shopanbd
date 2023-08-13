@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopanbd/ui/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/appbar_back_button.dart';
@@ -18,7 +17,9 @@ class WishListScreen extends StatelessWidget {
               childAspectRatio: 0.75
           ),
           itemBuilder: (context, index) {
-            return const ProductCart();
+            return null;
+
+           // return ProductCart(title: '',imageUrl: '',price: '',rating: '',);
           }),
       appBar: AppBar(
         leading: const BottomNavAppBarBackButton(),
