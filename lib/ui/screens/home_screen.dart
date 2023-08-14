@@ -57,8 +57,10 @@ class HomeScreen extends StatelessWidget {
               width: 10,
             ),
             AppBarIcons(
-              icon: Icons.notifications,
-              onTap: () {},
+              icon: Icons.logout,
+              onTap: () async {
+                await Get.find<AuthController>().logOut();
+              },
             ),
             const SizedBox(
               width: 10,

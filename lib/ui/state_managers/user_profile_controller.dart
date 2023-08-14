@@ -9,7 +9,7 @@ class UserProfileController extends GetxController {
   bool _getProfileDataInProgress = false;
   bool get getProfileDataInProgress => _getProfileDataInProgress;
 
-  Future<bool> getProfileData() async {
+  Future<bool> readProfile() async {
     _getProfileDataInProgress = true;
     update();
     final response = await NetworkCaller.getRequest(url: '/ReadProfile');
@@ -18,9 +18,9 @@ class UserProfileController extends GetxController {
     if (response.isSuccess) {
       final ProfileModel  profileModel = ProfileModel.fromJson(response.returnData);
 
-      if(profileModel.data != null)
+      if(profileModel.profileData != null)
         {
-          Get.find<AuthController>().saveProfileData(profileModel.data!.first);
+          Get.find<AuthController>().saveProfileData(profileModel.profileData!.first);
         }
       else
         {
@@ -32,4 +32,5 @@ class UserProfileController extends GetxController {
       return false;
     }
   }
+
 }

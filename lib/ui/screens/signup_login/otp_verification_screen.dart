@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:ecommerce_shopanbd/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +9,7 @@ import '../../utils/app_colors.dart';
 import '../../utils/snakbar_message.dart';
 import '../../widgets/elevated_button.dart';
 import '../../widgets/title_text.dart';
+import '../bottom_nav_bar_screen.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
   OtpVerificationScreen({Key? key, required this.email}) : super(key: key);
@@ -45,7 +45,7 @@ class OtpVerificationScreen extends StatelessWidget {
                       height: 20,
                     ),
                      Text(
-                      'A 4 Digit OTP Code has been Sent\n$email',
+                      'A 4 Digit OTP Code has been Sent\n\t\t$email',
                       style: const TextStyle(
                         fontSize: 18,
                         color: greyColor,
@@ -102,8 +102,8 @@ class OtpVerificationScreen extends StatelessWidget {
                                         email, _otpETController.text);
                                 //log(response as String);
                                 if (response) {
-                                  log('home screen');
-                                  Get.offAll(const HomeScreen());
+                                      Get.offAll(const BottomNavBarScreen());
+
                                 } else {
                                   log('fail');
                                   Get.showSnackbar(const GetSnackBar(

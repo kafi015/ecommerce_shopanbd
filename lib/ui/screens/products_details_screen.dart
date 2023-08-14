@@ -1,4 +1,6 @@
+import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/cart_product_item_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/product_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/wish_list_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/text_style.dart';
@@ -31,6 +33,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   List<String> _sizes = [];
 
+  Color? _selectedColor;
+  String? _selectedSize;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,8 +55,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               .getproductDetailsModel.productDetailsData!.first;
           _sizes = getSizes(productDetails.size ?? '');
           _colors = getColors(productDetails.color ?? '');
-          Get.find<CartController>().setProductSize(_sizes.first);
-          Get.find<CartController>().setProductColor(_colors.first);
+         Get.find<CartProductItemController>().setProductSize(_sizes.first);
+          Get.find<CartProductItemController>().setProductColor(_colors.first);
+          _selectedSize = Get.find<CartProductItemController>().getProductSize;
+          _selectedColor =
+              Get.find<CartProductItemController>().getProductColor;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -100,7 +108,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           ),
                                         ),
                                         onTap: () {
-                                          Get.find<CartController>()
+                                          Get.find<CartProductItemController>()
                                               .decreaseCartNumber();
                                         },
                                       ),
@@ -109,7 +117,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       ),
                                       SizedBox(
                                         width: 40,
-                                        child: GetBuilder<CartController>(
+                                        child: GetBuilder<
+                                            CartProductItemController>(
                                           builder: (controller) => Card(
                                             color:
                                                 softGreyColor.withOpacity(0.2),
@@ -143,7 +152,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           ),
                                         ),
                                         onTap: () {
-                                          Get.find<CartController>()
+                                          Get.find<CartProductItemController>()
                                               .addCartNumber();
                                         },
                                       ),
@@ -190,41 +199,39 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   width: 4,
                                 ),
                                 GetBuilder<WishListController>(
-                                  builder: (wishListController) {
-                                    if(wishListController.getWishListInProgress)
-                                      {
-                                        return const Center(
-                                          child: CircularProgressIndicator(
-                                            color: primaryColor,
-                                          ),
-                                        );
-                                      }
-                                    else {
-                                      return InkWell(
-                                        onTap: () {
-                                          Get.find<WishListController>()
-                                              .addWishList(
-                                              productDetails.productId!);
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: primaryColor,
-                                            borderRadius: BorderRadius.circular(
-                                                4.0),
-                                          ),
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(3.0),
-                                            child: Icon(
-                                              Icons.favorite_border,
-                                              size: 14,
-                                              color: Colors.white,
-                                            ),
+                                    builder: (wishListController) {
+                                  if (wishListController
+                                      .addNewItemInProgress) {
+                                    return const Center(
+                                      child: CircularProgressIndicator(
+                                        color: primaryColor,
+                                      ),
+                                    );
+                                  } else {
+                                    return InkWell(
+                                      onTap: () {
+                                        Get.find<WishListController>()
+                                            .addWishList(
+                                                productDetails.productId!);
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: primaryColor,
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                        ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(3.0),
+                                          child: Icon(
+                                            Icons.favorite_border,
+                                            size: 14,
+                                            color: Colors.white,
                                           ),
                                         ),
-                                      );
-                                    }
+                                      ),
+                                    );
                                   }
-                                ),
+                                }),
                               ],
                             ),
                             Text(
@@ -242,18 +249,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     child: InkWell(
                                       borderRadius: BorderRadius.circular(20.0),
                                       onTap: () {
-                                        Get.find<CartController>()
+                                        Get.find<CartProductItemController>()
                                             .setProductColor(_colors[i]);
                                       },
                                       child: CircleAvatar(
                                         backgroundColor: _colors[i],
                                         radius: 15,
-                                        child: GetBuilder<CartController>(
+                                        child: GetBuilder<
+                                            CartProductItemController>(
                                           builder: (controller) => Visibility(
-                                              visible:
-                                                  Get.find<CartController>()
-                                                          .getProductColor ==
-                                                      _colors[i],
+                                              visible: Get.find<
+                                                          CartProductItemController>()
+                                                      .getProductColor ==
+                                                  _colors[i],
                                               child: const Icon(
                                                 Icons.check,
                                                 color: Colors.white,
@@ -282,10 +290,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     child: InkWell(
                                       borderRadius: BorderRadius.circular(20.0),
                                       onTap: () {
-                                        Get.find<CartController>()
+                                        Get.find<CartProductItemController>()
                                             .setProductSize(_sizes[i]);
                                       },
-                                      child: GetBuilder<CartController>(
+                                      child:
+                                          GetBuilder<CartProductItemController>(
                                         builder: (controller) => CircleAvatar(
                                           radius: 17,
                                           backgroundColor: softGreyColor,
@@ -368,8 +377,69 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ],
                       ),
                     ),
-                    ElevatedButton(
-                        onPressed: () {}, child: const Text('Add to Cart')),
+                    SizedBox(
+                      width: 150,
+                      child: GetBuilder<CartController>(
+
+                        builder: (cartController) {
+                          if (cartController.addToCartInProgress) {
+                            return const Center(
+                              child: CircularProgressIndicator(color: primaryColor,),
+                            );
+                          }
+                          return ElevatedButton(
+                              onPressed: () async {
+                                final result = await Get.find<AuthController>()
+                                    .checkAuthValidation();
+
+                                if (result) {
+                                  if (_selectedSize!.isNotEmpty &&
+                                      _selectedColor.toString().isNotEmpty) {
+                                    _selectedSize =
+                                        Get.find<CartProductItemController>()
+                                            .getProductSize;
+                                    _selectedColor =
+                                        Get.find<CartProductItemController>()
+                                            .getProductColor;
+
+                                    if (_selectedSize != null &&
+                                        _selectedColor != null) {
+                                      cartController.addToCart(
+                                          productDetails.id!,
+                                          _selectedSize!,
+                                          _getHexCode(_selectedColor!)).then((value)
+                                      {
+                                        if (value) {
+                                          Get.showSnackbar(const GetSnackBar(
+                                            title: 'Success!',
+                                            message: 'Added to cart.',
+                                            duration: Duration(seconds: 2),
+                                          ));
+                                        }
+                                        else
+                                          {
+                                            Get.showSnackbar(const GetSnackBar(
+                                              title: 'Failed!',
+                                              message: 'Cart is not added.',
+                                              duration: Duration(seconds: 2),
+                                            ));
+                                          }
+                                      });
+                                    }
+                                  }
+                                  else {
+                                    Get.showSnackbar(const GetSnackBar(
+                                      title: 'Select color and size',
+                                      message: 'You have to select color and size both',
+                                      duration: Duration(seconds: 2),
+                                    ));
+                                  }
+                                }
+                              },
+                              child: const Text('Add to Cart'));
+                        }
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -394,11 +464,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return hexColors;
   }
 
-// String _getHexCode(Color color) {
-//   return color
-//       .toString()
-//       .replaceAll('0xff', '#')
-//       .replaceAll('Color(', '')
-//       .replaceAll(')', '');
-// }
+  String _getHexCode(Color color) {
+    return color
+        .toString()
+        .replaceAll('0xff', '#')
+        .replaceAll('Color(', '')
+        .replaceAll(')', '');
+  }
 }

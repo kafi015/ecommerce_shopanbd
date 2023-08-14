@@ -1,5 +1,9 @@
+import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/user_profile_controller.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/elevated_button.dart';
 import '../../widgets/title_text.dart';
@@ -12,6 +16,20 @@ class CompleteProfileScreen extends StatefulWidget {
 }
 
 class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
+
+  TextEditingController _firstNameETController = TextEditingController();
+  TextEditingController _lastNameETController = TextEditingController();
+  TextEditingController _mobileETController = TextEditingController();
+  TextEditingController _cityETController = TextEditingController();
+  TextEditingController _shippingAddressETController = TextEditingController();
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
 
 
   @override
@@ -50,35 +68,35 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   height: 20,
                 ),
                 TextFormFieldApp(
-                    controller: TextEditingController(),
+                    controller: _firstNameETController,
                     hintText: 'First Name',
                     textInputType: TextInputType.name),
                 const SizedBox(
                   height: 20,
                 ),
                 TextFormFieldApp(
-                    controller: TextEditingController(),
+                    controller: _lastNameETController,
                     hintText: 'Last Name',
                     textInputType: TextInputType.name),
                 const SizedBox(
                   height: 20,
                 ),
                 TextFormFieldApp(
-                    controller: TextEditingController(),
+                    controller: _mobileETController,
                     hintText: 'Mobile',
                     textInputType: TextInputType.phone),
                 const SizedBox(
                   height: 20,
                 ),
                 TextFormFieldApp(
-                    controller: TextEditingController(),
+                    controller: _cityETController,
                     hintText: 'City',
                     textInputType: TextInputType.text),
                 const SizedBox(
                   height: 20,
                 ),
                 TextFormFieldApp(
-                    controller: TextEditingController(),
+                    controller: _shippingAddressETController,
                     hintText: 'Shipping Address',
                     textInputType: TextInputType.text),
                 const SizedBox(

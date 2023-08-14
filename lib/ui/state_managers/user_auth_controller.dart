@@ -44,7 +44,7 @@ class UserAuthController extends GetxController {
       log('token token token token tokne token');
       log(response.returnData['data']);
       await Get.find<AuthController>().saveToken(response.returnData['data']);
-      Get.find<UserProfileController>().getProfileData();
+      Get.find<UserProfileController>().readProfile();
       _timer.cancel();
       return true;
     } else {

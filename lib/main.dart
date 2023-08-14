@@ -2,6 +2,7 @@ import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/cart_product_item_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/category_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/home_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/product_by_remark_controller.dart';
@@ -51,7 +52,7 @@ class GetxBinding extends Bindings {
     //  Get.create<BottomNavigationBarController>(() => BottomNavigationBarController());
     // Get.put(() => BottomNavigationBarController());
     Get.put(BottomNavigationBarController());
-    Get.put(CartController());
+    Get.put(CartProductItemController());
     Get.put(UserAuthController());
     Get.put(AuthController());
     Get.put(UserProfileController());
@@ -60,9 +61,6 @@ class GetxBinding extends Bindings {
     Get.put(ProductByRemarkController());
     Get.put(ProductController());
     Get.put(WishListController());
+    Get.put(CartController());
   }
 }
-
-//Class
-// 17 May 2023
-// 27 min

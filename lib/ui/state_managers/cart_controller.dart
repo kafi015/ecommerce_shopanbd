@@ -1,41 +1,85 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
 import 'package:get/get.dart';
 
-class CartController extends GetxController
-{
-  int noOfProduct = 1;
-  Color productColor = Colors.white;
-  late String productSize;
+import '../../data/models/cart_list_model.dart';
+import '../../data/services/network_caller.dart';
+import 'auth_controller.dart';
+import 'bottom_nav_bar_controller.dart';
 
-  int get getNoOfProduct => noOfProduct;
-  Color get getProductColor => productColor;
-  String get getProductSize => productSize;
+class CartController extends GetxController {
+  bool _addToCartInProgress = false, _getCartListInProgress = false;
+  CartListModel _cartListModel = CartListModel();
+  double _totalPrice = 0;
 
+  bool get addToCartInProgress => _addToCartInProgress;
 
-  void addCartNumber()
-  {
-      if(noOfProduct<10)
-        {
-          noOfProduct += 1;
-          update();
-        }
-  }
-  void decreaseCartNumber()
-  {
-      if(noOfProduct>1)
-        {
-          noOfProduct -= 1;
-          update();
-        }
-  }
-  void setProductColor(Color c)
-  {
-    productColor = c;
+  bool get getCartListInProgress => _getCartListInProgress;
+
+  CartListModel get cartListModel => _cartListModel;
+
+  double get totalPrice => _totalPrice;
+
+  Future<bool> addToCart(int productId, String size, String color) async {
+    _addToCartInProgress = true;
     update();
+    final response = await NetworkCaller.postRequest(
+        url: '/CreateCartList',
+        body: {"product_id": productId, "color": color, "size": size});
+    log(response.statusCode.toString());
+    _addToCartInProgress = false;
+    if (response.isSuccess) {
+      update();
+      return true;
+    } else {
+      if (response.statusCode == 401) {
+        Get.find<AuthController>().logOut();
+      }
+      update();
+      return false;
+    }
   }
-  void setProductSize(String s)
-  {
-    productSize = s;
+
+  Future<bool> getCartList() async {
+    _getCartListInProgress = true;
+    update();
+    final response = await NetworkCaller.getRequest(url: '/CartList');
+    _getCartListInProgress = false;
+    if (response.isSuccess) {
+      _cartListModel = CartListModel.fromJson(response.returnData);
+      updateTotalPrice();
+      update();
+      return true;
+    } else {
+      if (response.statusCode == 401) {
+        Get.find<BottomNavigationBarController>().backToHome();
+        Get.find<AuthController>().logOut();
+      }
+      update();
+      return false;
+    }
+  }
+
+  void incrementItem(int cartItemId) {
+    _cartListModel.data!
+        .firstWhere((element) => element.id == cartItemId)
+        .count++;
+    updateTotalPrice();
+  }
+
+  void decrementItem(int cartItemId) {
+    _cartListModel.data!
+        .firstWhere((element) => element.id == cartItemId)
+        .count--;
+    updateTotalPrice();
+  }
+
+  void updateTotalPrice() {
+    _totalPrice = 0;
+    for (var cart in _cartListModel.data!) {
+      _totalPrice +=
+          (double.tryParse(cart.product?.price ?? '0') ?? 0) * cart.count;
+    }
     update();
   }
 }
