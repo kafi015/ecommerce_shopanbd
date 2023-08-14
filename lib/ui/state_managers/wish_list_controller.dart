@@ -10,7 +10,7 @@ class WishListController extends GetxController {
 
   bool get getWishListInProgress => _getWishListInProgress;
   bool get addNewItemInProgress => _addNewItemInProgress;
-  WishListModel get wishListModel => _wishListModel;
+  WishListModel get getwishListModel => _wishListModel;
 
 
 

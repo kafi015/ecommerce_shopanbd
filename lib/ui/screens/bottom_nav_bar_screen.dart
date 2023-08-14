@@ -6,6 +6,7 @@ import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.d
 import 'package:ecommerce_shopanbd/ui/state_managers/category_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/home_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/product_by_remark_controller.dart';
+import 'package:ecommerce_shopanbd/ui/state_managers/wish_list_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,6 +35,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
     Get.find<ProductByRemarkController>().getPopularRemarkProducts();
     Get.find<ProductByRemarkController>().getSpecialRemarkProducts();
     Get.find<ProductByRemarkController>().getNewRemarkProducts();
+    Get.find<WishListController>().getWishlist();
   }
 
   @override
