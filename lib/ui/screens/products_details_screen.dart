@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopanbd/ui/screens/review_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_product_item_controller.dart';
@@ -185,7 +186,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   width: 8,
                                 ),
                                 TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(const ReviewScreen());
+                                  },
                                   child: const Text(
                                     'Reviews',
                                     style: TextStyle(

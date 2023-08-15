@@ -23,7 +23,7 @@ class WishListController extends GetxController {
     final response = await NetworkCaller.getRequest(url: '/CreateWishList/$productId');
     _addNewItemInProgress = false;
     if (response.isSuccess) {
-
+      //print(response.returnData);
       update();
       return true;
     } else {
@@ -40,6 +40,7 @@ class WishListController extends GetxController {
     update();
     final response = await NetworkCaller.getRequest(url: '/ProductWishList');
     _getWishListInProgress = false;
+    //print(response.returnData);
     if (response.isSuccess) {
       _wishListModel = WishListModel.fromJson(response.returnData);
       update();

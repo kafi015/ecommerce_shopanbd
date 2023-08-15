@@ -25,7 +25,7 @@ class TextFormFieldApp extends StatelessWidget {
           return null;
         },
         keyboardType: textInputType,
-        minLines: maxLine ?? 1,
+        maxLines: maxLine ?? 1,
         controller: controller,
         cursorColor: primaryColor,
         decoration:  InputDecoration(

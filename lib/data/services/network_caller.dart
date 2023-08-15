@@ -42,7 +42,7 @@ class NetworkCaller {
       }
     } catch (_) {
       log('Error in Catch Block!');
-      log(_ as String);
+      //log(_ as String);
       return ResponseModel(
         isSuccess: false,
         statusCode: -1,

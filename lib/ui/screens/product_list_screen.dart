@@ -7,8 +7,11 @@ import '../utils/app_colors.dart';
 import '../widgets/appbar_back_button.dart';
 
 class ProductListScreen extends StatefulWidget {
-  const ProductListScreen({Key? key,required this.categoryId}) : super(key: key);
+  const ProductListScreen(
+      {Key? key, required this.categoryId, required this.categoryName})
+      : super(key: key);
   final int categoryId;
+  final String categoryName;
 
   @override
   State<ProductListScreen> createState() => _ProductListScreenState();
@@ -26,8 +29,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButtton(),
-        title: const Text('Products'),
+        leading: widget.categoryName == 'WishList'
+            ? const BottomNavAppBarBackButton()
+            : const AppBarBackButtton(),
+        title: Text(widget.categoryName),
       ),
       body: GetBuilder<ProductController>(builder: (productController) {
         if (productController.getProductByCategoryInProgress) {

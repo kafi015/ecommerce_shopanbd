@@ -19,8 +19,8 @@ class WishListModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['msg'] = msg;
-    if (this.wishListData != null) {
-      data['data'] = this.wishListData!.map((v) => v.toJson()).toList();
+    if (wishListData != null) {
+      data['data'] = wishListData!.map((v) => v.toJson()).toList();
     }
     return data;
   }

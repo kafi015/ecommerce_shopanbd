@@ -1,9 +1,5 @@
-import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
-import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
-import 'package:ecommerce_shopanbd/ui/state_managers/user_profile_controller.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/elevated_button.dart';
 import '../../widgets/title_text.dart';
@@ -17,11 +13,11 @@ class CompleteProfileScreen extends StatefulWidget {
 
 class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
 
-  TextEditingController _firstNameETController = TextEditingController();
-  TextEditingController _lastNameETController = TextEditingController();
-  TextEditingController _mobileETController = TextEditingController();
-  TextEditingController _cityETController = TextEditingController();
-  TextEditingController _shippingAddressETController = TextEditingController();
+  final TextEditingController _firstNameETController = TextEditingController();
+  final TextEditingController _lastNameETController = TextEditingController();
+  final TextEditingController _mobileETController = TextEditingController();
+  final TextEditingController _cityETController = TextEditingController();
+  final TextEditingController _shippingAddressETController = TextEditingController();
 
 
   @override
