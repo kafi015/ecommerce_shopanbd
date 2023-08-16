@@ -1,3 +1,4 @@
+
 import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
@@ -11,10 +12,31 @@ import 'package:ecommerce_shopanbd/ui/state_managers/user_auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/user_profile_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/wish_list_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+// addDataFirebase()
+// {
+//   final db = FirebaseFirestore.instance;
+//   final user = <String, dynamic>{
+//     "first": "Ada",
+//     "last": "Lovelace",
+//     "born": 1815
+//   };
+//
+// // Add a new document with a generated ID
+//   db.collection("users").add(user).then((DocumentReference doc) =>
+//       print('DocumentSnapshot added with ID: ${doc.id}'));
+// }
+
+Future<void> main()
+async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  //addDataFirebase();
+
   runApp(const ShopanBD());
 }
 

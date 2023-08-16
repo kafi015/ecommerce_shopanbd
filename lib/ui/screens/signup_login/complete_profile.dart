@@ -99,7 +99,9 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   height: 20,
                 ),
                 ElevatedButtonApp(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   title: 'Complete',
                 ),
                 const SizedBox(
