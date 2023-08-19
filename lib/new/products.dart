@@ -152,7 +152,7 @@ class Products extends GetxController {
   List<dynamic> carts = [];
   List<dynamic> wishList = [];
 
-  List<int> cartQuantity = [];
+  List<int> cartQuantity =[];
 
   int _totalPrice = 0;
 
@@ -160,10 +160,11 @@ class Products extends GetxController {
 
   void setCartQuantity ()
   {
-    for(int i =0;i<50; i++)
-      {
-        cartQuantity.add(1);
-      }
+    cartQuantity = List<int>.filled(50, 1);
+    // for(int i =0;i<50; i++)
+    //   {
+    //     cartQuantity[i] = 1;
+    //   }
     update();
   }
 

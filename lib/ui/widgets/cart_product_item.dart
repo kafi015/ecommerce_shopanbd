@@ -83,7 +83,8 @@ class _CartProductItemState extends State<CartProductItem> {
                       IconButton(
                         onPressed: () {
                           Get.find<Products>().carts.removeAt(widget.index);
-                          Get.find<Products>().cartQuantity[widget.index] = Get.find<Products>().cartQuantity[widget.index+1];
+                          Get.find<Products>().setCartQuantity();
+                        //  Get.find<Products>().cartQuantity[widget.index] = Get.find<Products>().cartQuantity[widget.index+1];
                           Get.find<Products>().calculateTotalPrice();
                           Get.find<Products>().updateProducts();
                         },
