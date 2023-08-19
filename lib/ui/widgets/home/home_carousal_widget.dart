@@ -1,14 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/models/home_slider_model.dart';
 import '../../utils/app_colors.dart';
 
 class HomeCaruosalWidget extends StatelessWidget {
   final ValueNotifier<int> _sliderIndex = ValueNotifier(0);
-  final HomeSliderModel homeSliderModel;
+  final List<String> images;
 
-  HomeCaruosalWidget({super.key, required this.homeSliderModel});
+  HomeCaruosalWidget({super.key, required this.images, });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class HomeCaruosalWidget extends StatelessWidget {
               onPageChanged: (index, _) {
                 _sliderIndex.value = index;
               }),
-          items: homeSliderModel.sliders!.map((slider) {
+          items: images.map((image) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -31,9 +30,9 @@ class HomeCaruosalWidget extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 5.0),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(slider.image ?? ''),
+                      image: AssetImage(image),
                     ),
-                    color: primaryColor,
+                  //  color: primaryColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   alignment: Alignment.center,
@@ -54,7 +53,7 @@ class HomeCaruosalWidget extends StatelessWidget {
           builder: (context, currentIndex, _) => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              for (int i = 0; i < (homeSliderModel.sliders!.length); i++)
+              for (int i = 0; i < (images.length); i++)
                 Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: Container(

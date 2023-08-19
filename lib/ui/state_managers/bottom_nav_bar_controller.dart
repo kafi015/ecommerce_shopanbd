@@ -10,13 +10,16 @@ class BottomNavigationBarController extends GetxController
     selectedIndex = index;
     update();
   }
-  void backToHome()
+  void backToHome() {
+    if (selectedIndex != 0) {
+      selectedIndex = 0;
+      update();
+    }
+  }
+  void backToCart()
   {
-    if(selectedIndex != 0)
-      {
-        selectedIndex = 0;
-        update();
-      }
+    selectedIndex = 2;
+    update();
 
 
   }

@@ -28,7 +28,7 @@ class ProductImageCarusal extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     color: primaryColor.withOpacity(0.3),
-                    image: DecorationImage(image: NetworkImage(image)),
+                    image: DecorationImage(image: AssetImage(image)),
                   ),
                   alignment: Alignment.center,
                 );

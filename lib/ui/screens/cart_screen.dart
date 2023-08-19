@@ -1,11 +1,10 @@
+import 'package:ecommerce_shopanbd/new/products.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../state_managers/bottom_nav_bar_controller.dart';
-import '../state_managers/cart_controller.dart';
 import '../utils/app_colors.dart';
 import '../widgets/cart_product_item.dart';
-
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -15,13 +14,17 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Get.find<CartController>().getCartList();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Get.find<Products>().calculateTotalPrice();
     });
+
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,20 +42,21 @@ class _CartScreenState extends State<CartScreen> {
           },
         ),
       ),
-      body: GetBuilder<CartController>(builder: (cartController) {
-        if (cartController.getCartListInProgress) {
-          return const Center(
-            child: CircularProgressIndicator(color: primaryColor,),
-          );
-        }
+      body: GetBuilder<Products>(builder: (productController) {
         return Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                itemCount: cartController.cartListModel.data?.length ?? 0,
+
+              child:ListView.builder(
+                itemCount: productController.carts.length,
                 itemBuilder: (context, index) {
+
                   return CartProductItem(
-                    cartData: cartController.cartListModel.data![index],
+                    index: index,
+                    image: productController.carts[index]['image'],
+                    title: productController.carts[index]['title'],
+                    price: productController.carts[index]['price'],
+                    id: productController.carts[index]['id'],
                   );
                 },
               ),
@@ -66,7 +70,7 @@ class _CartScreenState extends State<CartScreen> {
                   )),
               child: Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -80,31 +84,29 @@ class _CartScreenState extends State<CartScreen> {
                               fontWeight: FontWeight.w500,
                               color: softGreyColor),
                         ),
-                        GetBuilder<CartController>(
-                            builder: (cartController) {
-                              // return Text('\$${cartController.totalPrice}',
-                              //     style: const TextStyle(
-                              //       fontSize: 18,
-                              //       fontWeight: FontWeight.w500,
-                              //       color: primaryColor,
-                              //     ));
-                              return const Text('\$4000.0',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                    color: primaryColor,
-                                  ));
-                            }
-                        ),
+                        GetBuilder<Products>(builder: (controller) {
+                          // return Text('\$${cartController.totalPrice}',
+                          //     style: const TextStyle(
+                          //       fontSize: 18,
+                          //       fontWeight: FontWeight.w500,
+                          //       color: primaryColor,
+                          //     ));
+                          //controller.calculateTotalPrice();
+                          return Text(controller.getTotalPrice.toString(),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: primaryColor,
+                              ));
+                        }),
                       ],
                     ),
                     SizedBox(
-                      width: 120,
-                      child: ElevatedButton(
-                        onPressed: (){},
-                        child: const Text('Checkout'),
-                      )
-                    )
+                        width: 120,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: const Text('Checkout'),
+                        ))
                   ],
                 ),
               ),

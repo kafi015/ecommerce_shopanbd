@@ -10,6 +10,7 @@ import 'bottom_nav_bar_controller.dart';
 class CartController extends GetxController {
   bool _addToCartInProgress = false, _getCartListInProgress = false;
   CartListModel _cartListModel = CartListModel();
+  List<int> cartQuantity = [];
   double _totalPrice = 0;
 
   bool get addToCartInProgress => _addToCartInProgress;

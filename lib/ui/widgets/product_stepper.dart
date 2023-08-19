@@ -4,9 +4,10 @@ import '../utils/app_colors.dart';
 
 class ProductStepper extends StatefulWidget {
   final Function(int currentValue) onDecrement, onIncrement;
+  final int indexCart;
 
   const ProductStepper(
-      {Key? key, required this.onDecrement, required this.onIncrement})
+      {Key? key, required this.onDecrement, required this.onIncrement, required this.indexCart})
       : super(key: key);
 
   @override

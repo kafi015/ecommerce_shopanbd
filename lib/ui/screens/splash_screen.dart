@@ -4,6 +4,7 @@ import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../new/products.dart';
 import '../utils/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 1)).then((value) async{
       final bool logInState = await Get.find<AuthController>().isLoggedIn();
       if(logInState) {
+        Get.find<Products>().setCartQuantity();
         Get.off(const BottomNavBarScreen());
       }
           else

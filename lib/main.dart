@@ -1,4 +1,7 @@
 
+import 'dart:async';
+
+import 'package:ecommerce_shopanbd/new/products.dart';
 import 'package:ecommerce_shopanbd/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
@@ -35,9 +38,9 @@ async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  //addDataFirebase();
-
   runApp(const ShopanBD());
+
+
 }
 
 class ShopanBD extends StatelessWidget {
@@ -84,5 +87,6 @@ class GetxBinding extends Bindings {
     Get.put(ProductController());
     Get.put(WishListController());
     Get.put(CartController());
+    Get.put(Products());
   }
 }

@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopanbd/ui/screens/review_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_product_item_controller.dart';
@@ -109,8 +108,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           ),
                                         ),
                                         onTap: () {
-                                          Get.find<CartProductItemController>()
-                                              .decreaseCartNumber();
+                                          // Get.find<CartProductItemController>()
+                                          //     .decreaseCartNumber();
                                         },
                                       ),
                                       const SizedBox(
@@ -153,8 +152,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           ),
                                         ),
                                         onTap: () {
-                                          Get.find<CartProductItemController>()
-                                              .addCartNumber();
+                                          // Get.find<CartProductItemController>()
+                                          //     .addCartNumber();
                                         },
                                       ),
                                     ],
@@ -187,7 +186,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    Get.to(const ReviewScreen());
+                                   // Get.to(const ReviewScreen());
                                   },
                                   child: const Text(
                                     'Reviews',

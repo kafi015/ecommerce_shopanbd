@@ -1,16 +1,24 @@
-import 'package:ecommerce_shopanbd/ui/widgets/product_stepper.dart';
+import 'package:ecommerce_shopanbd/new/products.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../data/models/cart_list_model.dart';
-import '../state_managers/cart_controller.dart';
 import '../utils/app_colors.dart';
 
-
 class CartProductItem extends StatefulWidget {
-  const CartProductItem({Key? key, required this.cartData}) : super(key: key);
+  const CartProductItem(
+      {Key? key,
+      required this.title,
+      required this.price,
+      required this.image,
+      required this.index,
+      required this.id})
+      : super(key: key);
 
-  final CartData cartData;
+  final int index;
+  final int id;
+  final String title;
+  final String price;
+  final String image;
 
   @override
   State<CartProductItem> createState() => _CartProductItemState();
@@ -26,23 +34,8 @@ class _CartProductItemState extends State<CartProductItem> {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            SizedBox(width:120,child: Image.asset('assets/shoe.png',)),
-            // Visibility(
-            //   visible:  widget.cartData.product?.image != null,
-            //   replacement: const SizedBox(
-            //     width: 120,
-            //     child: Center(
-            //       child: Text('No Image', style: TextStyle(
-            //         fontSize: 10
-            //       ),),
-            //     ),
-            //   ),
-            //   child: Image.network(
-            //     widget.cartData.product?.image ?? '',
-            //     width: 120,
-            //   ),
-            //
-            // ),
+            SizedBox(width: 120, child: Image.asset(widget.image)),
+
             const SizedBox(
               width: 4,
             ),
@@ -62,25 +55,25 @@ class _CartProductItemState extends State<CartProductItem> {
                             //       fontWeight: FontWeight.w500,
                             //       color: greyColor),
                             // ),
-                            const Text(
-                              'New Year Special Shoe',
-                              style: TextStyle(
+                            Text(
+                              widget.title,
+                              style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   color: greyColor),
                             ),
-                            Row(
+                            const Row(
                               children: [
                                 Text(
-                                  'Size: ${widget.cartData.size}',
-                                  style: const TextStyle(color: greyColor),
+                                  'Size: X',
+                                  style: TextStyle(color: greyColor),
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   width: 4,
                                 ),
                                 Text(
-                                  'Color: ${widget.cartData.color}',
-                                  style: const TextStyle(color: greyColor),
+                                  'Color: Red',
+                                  style: TextStyle(color: greyColor),
                                 ),
                               ],
                             )
@@ -88,7 +81,12 @@ class _CartProductItemState extends State<CartProductItem> {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.find<Products>().carts.removeAt(widget.index);
+                          Get.find<Products>().cartQuantity[widget.index] = Get.find<Products>().cartQuantity[widget.index+1];
+                          Get.find<Products>().calculateTotalPrice();
+                          Get.find<Products>().updateProducts();
+                        },
                         icon: const Icon(
                           Icons.delete_forever_outlined,
                           color: softGreyColor,
@@ -109,20 +107,76 @@ class _CartProductItemState extends State<CartProductItem> {
                       //       color: primaryColor,
                       //       fontSize: 16),
                       // ),
-                      const Text(
-                        '1000.0',
-                        style: TextStyle(
+                      Text(
+                        '৳${widget.price}',
+                        style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: primaryColor,
                             fontSize: 16),
                       ),
-                      ProductStepper(
-                        onDecrement: (int currentValue) {
-                          Get.find<CartController>().decrementItem(widget.cartData.id!);
-                        },
-                        onIncrement: (int currentValue) {
-                          Get.find<CartController>().incrementItem(widget.cartData.id!);
-                        },
+                      const SizedBox(width: 80,),
+                      Expanded(
+                        flex: 30,
+                        child: Row(
+                          children: [
+                            InkWell(
+                              child: const Card(
+                                color: primaryColor,
+                                margin: EdgeInsets.zero,
+                                child: Icon(
+                                  Icons.remove,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onTap: () {
+                                Get.find<Products>()
+                                    .subCartQ(widget.index);
+                                Get.find<Products>().calculateTotalPrice();
+                              },
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            SizedBox(
+                              width: 40,
+                              child: GetBuilder<Products>(
+                                builder: (controller) => Card(
+                                  color: softGreyColor.withOpacity(0.2),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      controller.cartQuantity[widget.index] < 10
+                                          ? '0${controller.cartQuantity[widget.index].toInt()}'
+                                          : controller.cartQuantity[widget.index].toInt()
+                                              .toString(),
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            InkWell(
+                              child: const Card(
+                                color: primaryColor,
+                                margin: EdgeInsets.zero,
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onTap: () {
+                                Get.find<Products>()
+                                    .addCartQ(widget.index);
+                                Get.find<Products>().calculateTotalPrice();
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
