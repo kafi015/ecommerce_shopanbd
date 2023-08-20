@@ -7,9 +7,8 @@ import '../widgets/appbar_back_button.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen(
-      {Key? key, required this.categoryId, required this.categoryName})
+      {Key? key, required this.categoryName})
       : super(key: key);
-  final int categoryId;
   final String categoryName;
 
   @override
@@ -21,13 +20,28 @@ class _ProductListScreenState extends State<ProductListScreen> {
   List<dynamic> categoryWiseProducts = [];
 
   void calculateOnOfProduct() {
-    for (int i = 0; i < Get.find<Products>().products.length; i++) {
-      if (Get.find<Products>().products[i]['category'] == widget.categoryName)
-        {
-          ++noOfProduct;
-          categoryWiseProducts.add(Get.find<Products>().products[i]);
+
+    if(widget.categoryName == 'Popular' || widget.categoryName == 'Special' || widget.categoryName == 'New')
+      {
+        for (int i = 0; i < Get.find<Products>().products.length; i++) {
+          if (Get.find<Products>().products[i]['remark'] == widget.categoryName)
+          {
+            ++noOfProduct;
+            categoryWiseProducts.add(Get.find<Products>().products[i]);
+          }
         }
-    }
+      }
+    else
+      {
+        for (int i = 0; i < Get.find<Products>().products.length; i++) {
+          if (Get.find<Products>().products[i]['category'] == widget.categoryName)
+          {
+            ++noOfProduct;
+            categoryWiseProducts.add(Get.find<Products>().products[i]);
+          }
+        }
+      }
+
   }
 
   @override
@@ -52,15 +66,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
               physics: const BouncingScrollPhysics(),
               itemCount: noOfProduct,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 5, crossAxisCount: 3, childAspectRatio: 0.75),
+                crossAxisSpacing: 5,
+                  mainAxisSpacing: 13, crossAxisCount: 3, childAspectRatio: 0.75),
               itemBuilder: (context, index) {
+                    int pIndex = productController.products.indexOf(categoryWiseProducts[index]);
                     return NProductCart(
                       productID: categoryWiseProducts[index]['id'],
                         image: categoryWiseProducts[index]['image'],
                         title: categoryWiseProducts[index]['title'],
                         price: categoryWiseProducts[index]['price'],
                         rating: categoryWiseProducts[index]['rating'],
-                        index: index, previoutScreen: widget.categoryName,
+                        index: pIndex,
+                      previoutScreen: widget.categoryName,
                     );
 
                 // return  ProductCart(product: ,);

@@ -1,4 +1,5 @@
 import 'package:ecommerce_shopanbd/new/products.dart';
+import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
@@ -135,7 +136,7 @@ class HomeScreen extends StatelessWidget {
               Remarks(
                 title: 'Popular',
                 onTap: () {
-                  //  Get.to(const ProductListScreen());
+                    Get.to(const ProductListScreen(categoryName: 'Popular',));
                 },
               ),
 
@@ -161,42 +162,14 @@ class HomeScreen extends StatelessWidget {
                   );
                 }),
 
-              // GetBuilder<ProductByRemarkController>(
-              //     builder: (popularRemarkController) {
-              //   if (popularRemarkController.getPopularRemarkInProgress) {
-              //     return const SizedBox(
-              //       height: 100,
-              //       child: Center(
-              //         child: CircularProgressIndicator(
-              //           color: primaryColor,
-              //         ),
-              //       ),
-              //     );
-              //   } else {
-              //     return SingleChildScrollView(
-              //       physics: const BouncingScrollPhysics(),
-              //       scrollDirection: Axis.horizontal,
-              //       child: Row(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         mainAxisAlignment: MainAxisAlignment.start,
-              //         children: popularRemarkController
-              //             .getPopularRemarkModel.productCategoryData!
-              //             .map(
-              //               (product) => ProductCart(
-              //                 product: product,
-              //               ),
-              //             )
-              //             .toList(),
-              //       ),
-              //     );
-              //   }
-              // }),
               const SizedBox(
                 height: 16,
               ),
               Remarks(
                 title: 'Special',
-                onTap: () {},
+                onTap: () {
+                  Get.to(const ProductListScreen(categoryName: 'Special',));
+                },
               ),
               const SizedBox(
                 height: 16,
@@ -222,42 +195,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                 );
               }),
-              // GetBuilder<ProductByRemarkController>(
-              //     builder: (specialRemarkController) {
-              //   if (specialRemarkController.getSpecialRemarkInProgress) {
-              //     return const SizedBox(
-              //       height: 100,
-              //       child: Center(
-              //         child: CircularProgressIndicator(
-              //           color: primaryColor,
-              //         ),
-              //       ),
-              //     );
-              //   } else {
-              //     return SingleChildScrollView(
-              //       physics: const BouncingScrollPhysics(),
-              //       scrollDirection: Axis.horizontal,
-              //       child: Row(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         mainAxisAlignment: MainAxisAlignment.start,
-              //         children: specialRemarkController
-              //             .getSpecialRemarkModel.productCategoryData!
-              //             .map(
-              //               (product) => ProductCart(
-              //                 product: product,
-              //               ),
-              //             )
-              //             .toList(),
-              //       ),
-              //     );
-              //   }
-              // }),
               const SizedBox(
                 height: 16,
               ),
               Remarks(
                 title: 'New',
-                onTap: () {},
+                onTap: () {
+                  Get.to(const ProductListScreen(categoryName: 'New',));
+                },
               ),
               const SizedBox(
                 height: 16,

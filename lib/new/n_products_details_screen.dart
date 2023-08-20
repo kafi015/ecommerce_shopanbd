@@ -180,105 +180,105 @@ class _NProductDetailsScreenState extends State<NProductDetailsScreen> {
                                   }),
                                 ],
                               ),
-                              Text(
-                                'Colors',
-                                style: subTitleTextStyle.copyWith(fontSize: 20),
-                              ),
+                              // Text(
+                              //   'Colors',
+                              //   style: subTitleTextStyle.copyWith(fontSize: 20),
+                              // ),
+                              // const SizedBox(
+                              //   height: 10,
+                              // ),
+                              // Row(
+                              //   children: [
+                              //     for (int i = 0; i < _colors.length; i++)
+                              //       Padding(
+                              //         padding:
+                              //             const EdgeInsets.only(right: 5.0),
+                              //         child: InkWell(
+                              //           borderRadius:
+                              //               BorderRadius.circular(20.0),
+                              //           onTap: () {
+                              //             Get.find<CartProductItemController>()
+                              //                 .setProductColor(_colors[i]);
+                              //           },
+                              //           child: CircleAvatar(
+                              //             backgroundColor: _colors[i],
+                              //             radius: 15,
+                              //             child: GetBuilder<
+                              //                 CartProductItemController>(
+                              //               builder: (controller) => Visibility(
+                              //                   visible: Get.find<
+                              //                               CartProductItemController>()
+                              //                           .getProductColor ==
+                              //                       _colors[i],
+                              //                   child: const Icon(
+                              //                     Icons.check,
+                              //                     color: Colors.white,
+                              //                   )),
+                              //             ),
+                              //           ),
+                              //         ),
+                              //       )
+                              //   ],
+                              // ),
+                              // const SizedBox(
+                              //   height: 10,
+                              // ),
+                              // Text(
+                              //   'Size',
+                              //   style: subTitleTextStyle.copyWith(fontSize: 20),
+                              // ),
+                              // const SizedBox(
+                              //   height: 10,
+                              // ),
+                              // Row(
+                              //   children: [
+                              //     for (int i = 0; i < _sizes.length; i++)
+                              //       Padding(
+                              //         padding:
+                              //             const EdgeInsets.only(right: 5.0),
+                              //         child: InkWell(
+                              //           borderRadius:
+                              //               BorderRadius.circular(20.0),
+                              //           onTap: () {
+                              //             Get.find<CartProductItemController>()
+                              //                 .setProductSize(_sizes[i]);
+                              //           },
+                              //           child: GetBuilder<
+                              //               CartProductItemController>(
+                              //             builder: (controller) => CircleAvatar(
+                              //               radius: 17,
+                              //               backgroundColor: softGreyColor,
+                              //               child: CircleAvatar(
+                              //                 backgroundColor:
+                              //                     controller.getProductSize ==
+                              //                             _sizes[i]
+                              //                         ? primaryColor
+                              //                         : Colors.white,
+                              //                 radius: 15,
+                              //                 child: Padding(
+                              //                   padding:
+                              //                       const EdgeInsets.all(5.0),
+                              //                   child: Text(
+                              //                     _sizes[i],
+                              //                     style: TextStyle(
+                              //                         fontWeight:
+                              //                             FontWeight.w500,
+                              //                         color: controller
+                              //                                     .getProductSize ==
+                              //                                 _sizes[i]
+                              //                             ? Colors.white
+                              //                             : primaryColor),
+                              //                   ),
+                              //                 ),
+                              //               ),
+                              //             ),
+                              //           ),
+                              //         ),
+                              //       )
+                              //   ],
+                              // ),
                               const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                children: [
-                                  for (int i = 0; i < _colors.length; i++)
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 5.0),
-                                      child: InkWell(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                        onTap: () {
-                                          Get.find<CartProductItemController>()
-                                              .setProductColor(_colors[i]);
-                                        },
-                                        child: CircleAvatar(
-                                          backgroundColor: _colors[i],
-                                          radius: 15,
-                                          child: GetBuilder<
-                                              CartProductItemController>(
-                                            builder: (controller) => Visibility(
-                                                visible: Get.find<
-                                                            CartProductItemController>()
-                                                        .getProductColor ==
-                                                    _colors[i],
-                                                child: const Icon(
-                                                  Icons.check,
-                                                  color: Colors.white,
-                                                )),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Size',
-                                style: subTitleTextStyle.copyWith(fontSize: 20),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                children: [
-                                  for (int i = 0; i < _sizes.length; i++)
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 5.0),
-                                      child: InkWell(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                        onTap: () {
-                                          Get.find<CartProductItemController>()
-                                              .setProductSize(_sizes[i]);
-                                        },
-                                        child: GetBuilder<
-                                            CartProductItemController>(
-                                          builder: (controller) => CircleAvatar(
-                                            radius: 17,
-                                            backgroundColor: softGreyColor,
-                                            child: CircleAvatar(
-                                              backgroundColor:
-                                                  controller.getProductSize ==
-                                                          _sizes[i]
-                                                      ? primaryColor
-                                                      : Colors.white,
-                                              radius: 15,
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(5.0),
-                                                child: Text(
-                                                  _sizes[i],
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: controller
-                                                                  .getProductSize ==
-                                                              _sizes[i]
-                                                          ? Colors.white
-                                                          : primaryColor),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 20,
+                                height: 100,
                               ),
                               Text(
                                 'Description',

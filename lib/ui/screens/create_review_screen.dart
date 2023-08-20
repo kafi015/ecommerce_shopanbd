@@ -63,6 +63,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                             'text' : reviewETController.text,
                           }
                         );
+                        productController.updateProducts();
                         Navigator.pop(context);
 
                       } else {

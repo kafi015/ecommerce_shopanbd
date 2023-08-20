@@ -72,7 +72,7 @@ class NProductCart extends StatelessWidget {
                         Text(
                           '৳$price',
                           style: const TextStyle(
-                            fontSize: 12,
+                            fontSize: 10,
                             fontWeight: FontWeight.w500,
                             color: primaryColor,
                           ),
