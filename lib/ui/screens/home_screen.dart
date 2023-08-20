@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopanbd/data/models/category.dart';
 import 'package:ecommerce_shopanbd/new/products.dart';
 import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
@@ -5,6 +6,7 @@ import 'package:ecommerce_shopanbd/ui/screens/signup_login/email_verification_sc
 import 'package:ecommerce_shopanbd/ui/state_managers/auth_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/bottom_nav_bar_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/app_colors.dart';
+import 'package:ecommerce_shopanbd/ui/utils/text_style.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widget.dart';
 import 'package:ecommerce_shopanbd/new/n_product_cart.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +22,63 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: Drawer(
+        backgroundColor: primaryColor.withOpacity(0.4),
+        child: ListView(
+          children: [
+            DrawerHeader(child: Icon(Icons.person,size: 100,)),
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.category),
+                title: Text('Category',style: titleTextStyle,),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.shopping_cart),
+                title: Text('Cart',style: titleTextStyle,),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.favorite),
+                title: Text('WishList',style: titleTextStyle,),
+              ),
+            ),
+            SizedBox(height: 300,),
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('LogOut',style: titleTextStyle,),
+              ),
+            ),
+          ],
+        ),
+      ),
+
       appBar: AppBar(
         elevation: 0,
-        leading: Image.asset(
-          'assets/App_Logo.jpg',
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Image.asset(
+                'assets/App_Logo.jpg',
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
         ),
+        // leading: Image.asset(
+        //   'assets/App_Logo.jpg',
+        // ),
         title: Row(
           children: [
             const Text(

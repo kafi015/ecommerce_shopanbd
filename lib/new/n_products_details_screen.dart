@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:ecommerce_shopanbd/new/products.dart';
 import 'package:ecommerce_shopanbd/ui/screens/review_screen.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/cart_controller.dart';
-import 'package:ecommerce_shopanbd/ui/state_managers/cart_product_item_controller.dart';
 import 'package:ecommerce_shopanbd/ui/state_managers/wish_list_controller.dart';
 import 'package:ecommerce_shopanbd/ui/utils/text_style.dart';
 import 'package:ecommerce_shopanbd/ui/widgets/appbar_back_button.dart';
@@ -31,9 +30,7 @@ class NProductDetailsScreen extends StatefulWidget {
 }
 
 class _NProductDetailsScreenState extends State<NProductDetailsScreen> {
-  final List<Color> _colors = [];
 
-  final List<String> _sizes = [];
 
   @override
   Widget build(BuildContext context) {
