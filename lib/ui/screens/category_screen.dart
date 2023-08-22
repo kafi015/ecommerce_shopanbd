@@ -18,36 +18,30 @@ class CategoryScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0),
         child: GetBuilder<CategoryController>(builder: (categoryController) {
-            return const Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CategoryCardWidget(
-                        name: 'Electronics',
-                        imageUrl: 'assets/electronics_icon.png',
-                        id: 1
-                    ),
-                    CategoryCardWidget(
-                        name: 'Food',
-                        imageUrl: 'assets/fruits_icon.png',
-                        id: 2
-                    ),
-                    CategoryCardWidget(
-                        name: 'Fashion',
-                        imageUrl: 'assets/fashion_icon.png',
-                        id: 3
-                    ),
-                    CategoryCardWidget(
-                        name: 'Furniture',
-                        imageUrl: 'assets/furniture_icon.png',
-                        id: 4
-                    ),
-                  ],
-                ),
-              ],
-            );
+          return  const Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CategoryCardWidget(
+                      name: 'Electronics',
+                      imageUrl: 'assets/electronics_icon.png',
+                      id: 1),
+                  CategoryCardWidget(
+                      name: 'Food', imageUrl: 'assets/fruits_icon.png', id: 2),
+                  CategoryCardWidget(
+                      name: 'Fashion',
+                      imageUrl: 'assets/fashion_icon.png',
+                      id: 3),
+                  CategoryCardWidget(
+                      name: 'Furniture',
+                      imageUrl: 'assets/furniture_icon.png',
+                      id: 4),
 
+                ],
+              ),
+            ],
+          );
         }),
       ),
     );

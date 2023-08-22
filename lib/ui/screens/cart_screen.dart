@@ -1,5 +1,6 @@
 import 'package:ecommerce_shopanbd/new/products.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bkash/flutter_bkash.dart';
 import 'package:get/get.dart';
 
 import '../state_managers/bottom_nav_bar_controller.dart';
@@ -104,7 +105,14 @@ class _CartScreenState extends State<CartScreen> {
                     SizedBox(
                         width: 120,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            final flutterBkash = FlutterBkash();
+                            await flutterBkash.pay(
+                              context: context, // BuildContext context
+                              amount: 100.0, // amount as double
+                              merchantInvoiceNumber: "invoice123",
+                            );
+                          },
                           child: const Text('Checkout'),
                         ))
                   ],

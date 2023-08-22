@@ -27,7 +27,7 @@ class NetworkCaller {
             statusCode: response.statusCode,
             returnData: jsonDecode(response.body));
       }
-      // else if (response.statusCode == 500 || response.statusCode == 401) {
+      // else if (response.statusCode == 401) {
       //   Get.find<AuthController>().logOut();
       //   return ResponseModel(
       //       isSuccess: false,

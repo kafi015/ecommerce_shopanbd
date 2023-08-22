@@ -28,6 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       }
           else
             {
+             // Get.off(const BottomNavBarScreen());
               Get.off(const EmailVerificationScreen());
             }
 

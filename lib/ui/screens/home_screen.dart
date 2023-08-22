@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopanbd/data/models/category.dart';
 import 'package:ecommerce_shopanbd/new/products.dart';
 import 'package:ecommerce_shopanbd/ui/screens/product_list_screen.dart';
 import 'package:ecommerce_shopanbd/ui/screens/signup_login/complete_profile.dart';
@@ -11,11 +10,11 @@ import 'package:ecommerce_shopanbd/ui/widgets/product_details/category_card_widg
 import 'package:ecommerce_shopanbd/new/n_product_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/home/appbar_icons.dart';
 import '../widgets/home/home_carousal_widget.dart';
 import '../widgets/home/home_remarks.dart';
-import '../widgets/home/search_textfield.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,35 +24,48 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
+
       drawer: Drawer(
         backgroundColor: primaryColor.withOpacity(0.4),
         child: ListView(
           children: [
-            DrawerHeader(child: Icon(Icons.person,size: 100,)),
+            const DrawerHeader(child: Icon(Icons.person,size: 100,)),
             Card(
               child: ListTile(
-                leading: Icon(Icons.category),
+                onTap: (){
+                  Get.find<BottomNavigationBarController>().changeIndex(1);
+                },
+                leading: const Icon(Icons.category),
                 title: Text('Category',style: titleTextStyle,),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Card(
               child: ListTile(
-                leading: Icon(Icons.shopping_cart),
+                onTap: (){
+                  Get.find<BottomNavigationBarController>().changeIndex(2);
+                },
+                leading: const Icon(Icons.shopping_cart),
                 title: Text('Cart',style: titleTextStyle,),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Card(
               child: ListTile(
-                leading: Icon(Icons.favorite),
+                onTap: (){
+                  Get.find<BottomNavigationBarController>().changeIndex(3);
+                },
+                leading: const Icon(Icons.favorite),
                 title: Text('WishList',style: titleTextStyle,),
               ),
             ),
-            SizedBox(height: 300,),
+            const SizedBox(height: 300,),
             Card(
               child: ListTile(
-                leading: Icon(Icons.logout),
+                onTap: (){
+                  Get.to(const EmailVerificationScreen());
+                },
+                leading: const Icon(Icons.logout),
                 title: Text('LogOut',style: titleTextStyle,),
               ),
             ),
@@ -102,7 +114,13 @@ class HomeScreen extends StatelessWidget {
             ),
             AppBarIcons(
               icon: Icons.call,
-              onTap: () {},
+              onTap: () async {
+                final Uri launchUri = Uri(
+                  scheme: 'TEL',
+                  path: '+8801622016786',
+                );
+                await launchUrl(launchUri);
+              },
             ),
             const SizedBox(
               width: 10,
@@ -126,7 +144,30 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SearchTextField(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: TextFormField(
+                  textInputAction: TextInputAction.search,
+                  keyboardType: TextInputType.text,
+                  cursorColor: primaryColor,
+                  decoration: InputDecoration(
+                    hintText: 'search',
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: softGreyColor,
+                    ),
+                    fillColor: Colors.grey[100],
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(34.0)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(34.0)),
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 16,
               ),

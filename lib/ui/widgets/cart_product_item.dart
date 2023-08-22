@@ -62,21 +62,21 @@ class _CartProductItemState extends State<CartProductItem> {
                                   fontWeight: FontWeight.w500,
                                   color: greyColor),
                             ),
-                            const Row(
-                              children: [
-                                Text(
-                                  'Size: X',
-                                  style: TextStyle(color: greyColor),
-                                ),
-                                SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  'Color: Red',
-                                  style: TextStyle(color: greyColor),
-                                ),
-                              ],
-                            )
+                            // const Row(
+                            //   children: [
+                            //     Text(
+                            //       'Size: X',
+                            //       style: TextStyle(color: greyColor),
+                            //     ),
+                            //     SizedBox(
+                            //       width: 4,
+                            //     ),
+                            //     Text(
+                            //       'Color: Red',
+                            //       style: TextStyle(color: greyColor),
+                            //     ),
+                            //   ],
+                            // )
                           ],
                         ),
                       ),
